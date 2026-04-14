@@ -102,6 +102,7 @@ export function CatalogShowcase({
         <Pagination
           current={currentPage}
           total={products.length}
+          pageSize={PAGE_SIZE}
           onChange={(page) => setCurrentPage(page)}
           showSizeChanger={false}
         />
