@@ -1,0 +1,28 @@
+import { ProductCard, type Product } from "@/entities/product";
+
+type CatalogGridProps = {
+  products: Product[];
+};
+
+export function CatalogGrid({ products }: CatalogGridProps) {
+  if (products.length === 0) {
+    return (
+      <div className="rounded-3xl border border-dashed bg-card/50 px-6 py-16 text-center">
+        <h3 className="text-2xl font-semibold tracking-tight">
+          Ничего не найдено
+        </h3>
+        <p className="mt-3 text-muted-foreground">
+          Попробуйте убрать часть фильтров или изменить поисковый запрос.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-7 auto-rows-fr items-stretch [&>*]:min-w-0">
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </div>
+  );
+}

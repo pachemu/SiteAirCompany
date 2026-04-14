@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 export default function Footer() {
   return (
     <footer className="border-t bg-background">
-      <div className="mx-auto flex min-h-20 max-w-7xl flex-col gap-6 px-4 py-6 md:flex-row md:items-center md:justify-between">
+      <div className="mx-auto flex min-h-20 flex-col gap-6 px-4 py-6 md:flex-row md:items-center md:justify-around">
         <div className="text-lg font-semibold">
           Logo Ionin Conditioner Crimea
         </div>
