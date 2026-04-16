@@ -24,7 +24,7 @@ export default function Footer() {
             variant="link"
             className="h-auto justify-start p-0 md:justify-end"
           >
-            <a href="tel:+79788397202">+7 (978) 839-72-02</a>
+            <a href="tel:+79788390272">+7 (978) 839-02-72</a>
           </Button>
 
           <Button

@@ -16,7 +16,7 @@ export default function Header() {
           </Button>
 
           <Button asChild variant="ghost">
-            <a href="tel:+79784512044">+7 (978) 839-02-72</a>
+            <a href="tel:+79788390272">+7 (978) 839-02-72</a>
           </Button>
 
           <Button
