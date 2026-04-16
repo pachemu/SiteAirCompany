@@ -13,26 +13,36 @@ export function ProductGallery({ images = [] }: { images?: string[] }) {
   }
 
   return (
-    <div className="h-full min-h-[500px] rounded-2xl overflow-hidden bg-gray-50 border">
+    <div className="min-h-[500px] rounded-2xl overflow-hidden bg-gray-50 border">
       <Carousel
-        effect="fade"
-        arrows={images.length > 1}
-        dots={{ className: "mb-4" }}
-        className="h-full"
+        arrows
+        dots
+        draggable
+        infinite
+        className="h-full [&_.slick-track]:h-full [&_.slick-list]:h-full [&_.slick-slide>div]:h-full 
+        [&_.slick-dots_li_button]:bg-black 
+    [&_.slick-dots_li_button]:opacity-30 
+    [&_.slick-dots_li.slick-active_button]:bg-blue-600 
+    [&_.slick-dots_li.slick-active_button]:opacity-100 
+    [&_.slick-dots_li_button]:h-1.5
+    [&_.slick-dots_li_button]:rounded-full"
       >
         {images.map((url, index) => (
           <div
-            key={index}
-            className="h-full min-h-[500px] flex items-center justify-center p-6"
+            key={url || index}
+            className="h-full !flex min-h-[500px] p-6 flex items-center justify-center"
           >
-            <Image
-              src={url}
-              alt="product"
-              width={600}
-              height={500}
-              unoptimized
-              className="object-contain h-full max-h-[450px]"
-            />
+            <div className="flex h-[600px] w-full items-center justify-center p-8">
+              <Image
+                src={url}
+                alt="product"
+                width={1400}
+                height={900}
+                unoptimized
+                className="max-h-full w-auto object-contain"
+                priority={index === 0}
+              />
+            </div>
           </div>
         ))}
       </Carousel>

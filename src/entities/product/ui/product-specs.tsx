@@ -6,6 +6,11 @@ interface ProductSpecsProps {
 }
 
 export function ProductSpecs({ product }: ProductSpecsProps) {
+  const features =
+    Array.isArray(product.features) && product.features.length > 0
+      ? product.features
+      : [];
+
   const items = [
     {
       key: "brand",
@@ -52,12 +57,31 @@ export function ProductSpecs({ product }: ProductSpecsProps) {
 
       children: product.category,
     },
+    ...(product.area
+      ? [
+          {
+            key: "area",
+            label: "Площадь помещения",
+            children: product.area,
+          },
+        ]
+      : []),
+    {
+      key: "features",
+      label: "Особенности",
+      children:
+        features.length === 0 ? (
+          <span className="text-muted-foreground">—</span>
+        ) : (
+          <span className="m-0 pl-5 space-y-1">{features.join(", ")}</span>
+        ),
+    },
   ];
 
   return (
-    <div className="bg-white p-4 rounded-lg border">
+    <div className="bg-white p-6 rounded-lg border">
       <Descriptions
-        title="Характеристики"
+        title="Технические характеристики"
         column={1}
         items={items}
         size="small"
