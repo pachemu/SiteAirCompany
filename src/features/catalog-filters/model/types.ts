@@ -1,5 +1,9 @@
 export const CATALOG_SORT_OPTIONS = [
   {
+    value: "default",
+    label: "По умолчанию",
+  },
+  {
     value: "price-asc",
     label: "Сначала дешевле",
   },

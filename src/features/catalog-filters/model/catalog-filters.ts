@@ -8,7 +8,7 @@ import {
   type CatalogSort,
 } from "./types";
 
-export const DEFAULT_CATALOG_SORT: CatalogSort = "price-asc";
+export const DEFAULT_CATALOG_SORT: CatalogSort = "default";
 
 export const DEFAULT_CATALOG_FILTERS: CatalogFilters = {
   query: "",
@@ -117,16 +117,18 @@ export function filterAndSortProducts(
   const normalizePrice = (price: number | string) =>
     typeof price === "string" ? Number(price.replace(/[^0-9.-]+/g, "")) : price;
 
-  filteredProducts.sort((left, right) => {
-    const leftPrice = normalizePrice(left.price);
-    const rightPrice = normalizePrice(right.price);
+  if (filters.sort !== "default") {
+    filteredProducts.sort((left, right) => {
+      const leftPrice = normalizePrice(left.price);
+      const rightPrice = normalizePrice(right.price);
 
-    if (filters.sort === "price-desc") {
-      return rightPrice - leftPrice;
-    }
+      if (filters.sort === "price-desc") {
+        return rightPrice - leftPrice;
+      }
 
-    return leftPrice - rightPrice;
-  });
+      return leftPrice - rightPrice;
+    });
+  }
 
   return filteredProducts;
 }

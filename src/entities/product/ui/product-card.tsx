@@ -1,6 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Card, Tag, Button, Carousel } from "antd";
-import { PhoneOutlined } from "@ant-design/icons";
+import { Phone } from "lucide-react";
 
 import { formatProductPrice } from "../lib/format-product-price";
 import type { Product } from "../model/types";
@@ -58,9 +59,11 @@ export function ProductCard({ product }: ProductCardProps) {
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
               {product.category}
             </p>
-            <h2 className="text-lg font-semibold leading-tight">
-              {product.brand} {product.series}
-            </h2>
+            <Link href={`/catalog/${product.id}`}>
+              <h2 className="text-lg font-semibold leading-tight hover:text-primary transition-colors cursor-pointer">
+                {product.brand} {product.series}
+              </h2>
+            </Link>
             <p className="text-sm text-muted-foreground">{product.model}</p>
           </div>
 
@@ -114,7 +117,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <Button
           type="primary"
           size="small"
-          icon={<PhoneOutlined />}
+          icon={<Phone className="h-4 w-4" />}
           href="tel:+79788397202"
         >
           Заказать

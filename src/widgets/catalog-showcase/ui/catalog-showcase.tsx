@@ -36,8 +36,12 @@ export function CatalogShowcase({
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [products]);
+    if (currentPage !== 1) {
+      startTransition(() => {
+        setCurrentPage(1);
+      });
+    }
+  }, [products, currentPage, startTransition]);
 
   const pagedProducts = useMemo(() => {
     const start = (currentPage - 1) * PAGE_SIZE;

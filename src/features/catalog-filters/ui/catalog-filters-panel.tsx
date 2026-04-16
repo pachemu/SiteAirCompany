@@ -48,9 +48,6 @@ export function CatalogFiltersPanel({
   const filteredFeatures = options.features.filter((feature) =>
     FEATURES.includes(feature),
   );
-  const visibleFeatureCount = 8;
-  const visibleFeatures = filteredFeatures.slice(0, visibleFeatureCount);
-  const hiddenFeatures = filteredFeatures.slice(visibleFeatureCount);
   const onChangeSelect = (event: string) => {
     onAreaChange(event);
   };
@@ -133,11 +130,11 @@ export function CatalogFiltersPanel({
           </label>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-3 p-2">
           <p className="text-sm font-medium">Фильтрация по функциям</p>
 
           <div className="flex flex-wrap gap-2">
-            {visibleFeatures.map((feature) => {
+            {filteredFeatures.map((feature) => {
               const isActive = filters.features.includes(feature);
 
               return (
@@ -151,31 +148,6 @@ export function CatalogFiltersPanel({
                 </Button>
               );
             })}
-
-            {hiddenFeatures.length > 0 ? (
-              <details className="relative">
-                <summary className="flex content-center h-8 items-center rounded-2xl border bg-background px-4 text-sm font-medium shadow-sm cursor-pointer list-none marker:hidden outline-none transition focus-visible:ring-2 focus-visible:ring-ring">
-                  Ещё {hiddenFeatures.length}
-                </summary>
-                <div className="mt-2 rounded-3xl border bg-card p-4 shadow-sm">
-                  <div className="flex flex-wrap gap-2">
-                    {hiddenFeatures.map((feature) => {
-                      const isActive = filters.features.includes(feature);
-
-                      return (
-                        <Button
-                          key={feature}
-                          type={isActive ? "primary" : "default"}
-                          onClick={() => onFeatureToggle(feature)}
-                        >
-                          {feature}
-                        </Button>
-                      );
-                    })}
-                  </div>
-                </div>
-              </details>
-            ) : null}
           </div>
         </div>
       </div>
