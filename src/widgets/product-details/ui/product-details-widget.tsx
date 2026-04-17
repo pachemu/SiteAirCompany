@@ -28,15 +28,15 @@ export function ProductDetailsWidget({ product }: ProductDetailsWidgetProps) {
     );
 
   return (
-    <div className="min-h-screen bg-background py-12">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 mb-12 items-start">
+    <div className="min-h-screen bg-background py-10 md:py-12">
+      <div className="mx-auto w-full max-w-6xl px-4 md:px-6 xl:px-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-5 lg:items-start lg:gap-10">
           <div className="lg:col-span-3 lg:sticky lg:top-24 lg:h-[calc(100vh-6rem)]">
             <ProductGallery images={images} />
           </div>
           <div className="lg:col-span-2 flex flex-col gap-6 min-w-0">
             <ProductMainHeader product={product} />
-            <div className="bg-white rounded-lg border p-6">
+            <div className="rounded-2xl border bg-card p-6">
               <div className="text-sm text-muted-foreground mb-1">Цена</div>
               <div className="text-3xl font-semibold leading-tight">
                 {hasPrice(product.price)

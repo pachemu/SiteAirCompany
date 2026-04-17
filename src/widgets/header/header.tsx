@@ -1,8 +1,9 @@
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import { EMAIL, PHONE_E164, PHONE_HUMAN } from "@/shared/config/contacts";
 
-export default function Header() {
+export function Header() {
   return (
     <header className="border-b bg-background">
       <div className="mx-auto flex min-h-15 flex-col gap-5 px-4 py-3 text-sm text-foreground md:flex-row md:items-center md:justify-around">
@@ -16,7 +17,7 @@ export default function Header() {
           </Button>
 
           <Button asChild variant="ghost">
-            <a href="tel:+79788390272">+7 (978) 839-02-72</a>
+            <a href={`tel:${PHONE_E164}`}>{PHONE_HUMAN}</a>
           </Button>
 
           <Button
@@ -24,9 +25,7 @@ export default function Header() {
             variant="link"
             className="h-auto justify-start p-0 md:justify-end"
           >
-            <a href="mailto:alexeyivanych182@mail.ru">
-              alexeyivanych182@mail.ru
-            </a>
+            <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
           </Button>
         </div>
       </div>

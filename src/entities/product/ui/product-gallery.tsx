@@ -35,10 +35,9 @@ export function ProductGallery({ images = [] }: { images?: string[] }) {
             <div className="flex h-[600px] w-full items-center justify-center p-8">
               <Image
                 src={url}
-                alt="product"
+                alt={`Фото товара ${index + 1}`}
                 width={1400}
                 height={900}
-                unoptimized
                 className="max-h-full w-auto object-contain"
                 priority={index === 0}
               />

@@ -1,4 +1,4 @@
-import type { Product } from "../model/types";
+import type { Product } from "@/entities/product/model/types";
 
 interface ProductMainHeaderProps {
   product: Product;

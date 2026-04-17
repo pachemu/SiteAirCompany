@@ -3,8 +3,10 @@ import Link from "next/link";
 import { Card, Tag, Button, Carousel } from "antd";
 import { Phone } from "lucide-react";
 
-import { formatProductPrice } from "../lib/format-product-price";
-import type { Product } from "../model/types";
+import { PHONE_E164 } from "@/shared/config/contacts";
+
+import { formatProductPrice } from "@/entities/product/lib/format-product-price";
+import type { Product } from "@/entities/product/model/types";
 
 type ProductCardProps = {
   product: Product;
@@ -45,8 +47,8 @@ export function ProductCard({ product }: ProductCardProps) {
                 alt={`${product.model} - фото ${index + 1}`}
                 width={320}
                 height={280}
-                unoptimized
                 className="h-48 w-full object-contain"
+                priority={index === 0}
               />
             </div>
           ))}
@@ -118,7 +120,7 @@ export function ProductCard({ product }: ProductCardProps) {
           type="primary"
           size="small"
           icon={<Phone className="h-4 w-4" />}
-          href="tel:+79788397202"
+          href={`tel:${PHONE_E164}`}
         >
           Заказать
         </Button>

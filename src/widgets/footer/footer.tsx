@@ -1,8 +1,9 @@
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import { EMAIL, PHONE_E164, PHONE_HUMAN } from "@/shared/config/contacts";
 
-export default function Footer() {
+export function Footer() {
   return (
     <footer className="border-t bg-background">
       <div className="mx-auto flex min-h-20 flex-col gap-6 px-4 py-6 md:flex-row md:items-center md:justify-around">
@@ -24,7 +25,7 @@ export default function Footer() {
             variant="link"
             className="h-auto justify-start p-0 md:justify-end"
           >
-            <a href="tel:+79788390272">+7 (978) 839-02-72</a>
+            <a href={`tel:${PHONE_E164}`}>{PHONE_HUMAN}</a>
           </Button>
 
           <Button
@@ -32,9 +33,7 @@ export default function Footer() {
             variant="link"
             className="h-auto justify-start p-0 md:justify-end"
           >
-            <a href="mailto:alexeyivanych182@mail.ru">
-              alexeyivanych182@mail.ru
-            </a>
+            <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
           </Button>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { PRODUCTS_MOCK } from "../model/products.mock";
 import type { Product } from "../model/types";
 import { db } from "@/lib/db";
-import { productsTable } from "../../../../api/db/schema";
+import { productsTable } from "@/api/db/schema";
 import { getRedisClient } from "@/lib/redis";
 function parseFeatures(rawFeatures: unknown): string[] {
   if (typeof rawFeatures === "string") {

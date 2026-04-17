@@ -1,5 +1,5 @@
 import { Descriptions } from "antd";
-import type { Product } from "../model/types";
+import type { Product } from "@/entities/product/model/types";
 
 interface ProductSpecsProps {
   product: Product;
@@ -79,7 +79,7 @@ export function ProductSpecs({ product }: ProductSpecsProps) {
   ];
 
   return (
-    <div className="bg-white p-6 rounded-lg border">
+    <div className="rounded-2xl border bg-card p-6">
       <Descriptions
         title="Технические характеристики"
         column={1}
