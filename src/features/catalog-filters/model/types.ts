@@ -20,6 +20,7 @@ export type CatalogFilters = {
   area: string | null;
   features: string[];
   sort: CatalogSort;
+  page: number;
 };
 
 export type CatalogFilterOptions = {
@@ -32,4 +33,5 @@ export type CatalogPageSearchParams = {
   area?: string | string[] | undefined;
   feature?: string | string[] | undefined;
   sort?: string | string[] | undefined;
+  page?: string | string[] | undefined;
 };

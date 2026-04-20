@@ -2,7 +2,10 @@ import { PRODUCTS_MOCK } from "../model/products.mock";
 import type { Product } from "../model/types";
 import { db } from "@/lib/db";
 import { productsTable } from "@/api/db/schema";
-import { getRedisClient } from "@/lib/redis";
+import { getCacheValue, setCacheValue } from "@/lib/sqlite-cache";
+
+const PRODUCTS_CACHE_KEY = "products";
+const PRODUCTS_CACHE_TTL_SECONDS = 600;
 function parseFeatures(rawFeatures: unknown): string[] {
   if (typeof rawFeatures === "string") {
     return rawFeatures
@@ -50,12 +53,10 @@ function mapProductRow(row: Record<string, unknown>): Product {
 }
 
 export async function getProducts(): Promise<Product[]> {
-  const redis = await getRedisClient();
-  const cacheKey = `products`;
   try {
-    const cached = await redis.get(cacheKey);
+    const cached = await getCacheValue<Product[]>(PRODUCTS_CACHE_KEY);
     if (cached) {
-      return JSON.parse(cached);
+      return cached;
     }
   } catch {}
   if (!db) {
@@ -66,7 +67,7 @@ export async function getProducts(): Promise<Product[]> {
     const mapped = rows.map(mapProductRow);
 
     try {
-      await redis.set(cacheKey, JSON.stringify(mapped), { EX: 600 });
+      await setCacheValue(PRODUCTS_CACHE_KEY, mapped, PRODUCTS_CACHE_TTL_SECONDS);
     } catch {}
 
     return mapped;

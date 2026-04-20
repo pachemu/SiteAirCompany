@@ -33,15 +33,14 @@ export function CatalogShowcase({
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
-  const [currentPage, setCurrentPage] = useState(1);
+  const [draftFilters, setDraftFilters] = useState(filters);
 
   useEffect(() => {
-    if (currentPage !== 1) {
-      startTransition(() => {
-        setCurrentPage(1);
-      });
-    }
-  }, [products, currentPage, startTransition]);
+    setDraftFilters(filters);
+  }, [filters]);
+
+  const totalPages = Math.max(1, Math.ceil(products.length / PAGE_SIZE));
+  const currentPage = Math.min(draftFilters.page, totalPages);
 
   const pagedProducts = useMemo(() => {
     const start = (currentPage - 1) * PAGE_SIZE;
@@ -60,45 +59,68 @@ export function CatalogShowcase({
     });
   }
 
+  function updateFilters(nextFilters: CatalogFilters) {
+    setDraftFilters(nextFilters);
+    replaceCatalogRoute(nextFilters);
+  }
+
   return (
     <section className="space-y-6">
       <CatalogFiltersPanel
-        filters={filters}
-        searchValue={filters.query}
+        filters={draftFilters}
+        searchValue={draftFilters.query}
         options={options}
         resultCount={products.length}
         totalCount={totalProducts}
         isPending={isPending}
         onSearchChange={(query) =>
-          replaceCatalogRoute({
-            ...filters,
+          updateFilters({
+            ...draftFilters,
             query,
+            page: 1,
           })
         }
         onAreaChange={(area) =>
-          replaceCatalogRoute({
-            ...filters,
+          updateFilters({
+            ...draftFilters,
             area: area || null,
+            page: 1,
           })
         }
         onSortChange={(sort) =>
-          replaceCatalogRoute({
-            ...filters,
+          updateFilters({
+            ...draftFilters,
             sort,
+            page: 1,
           })
         }
         onFeatureToggle={(feature) =>
-          replaceCatalogRoute({
-            ...filters,
-            features: filters.features.includes(feature)
-              ? filters.features.filter((item) => item !== feature)
-              : [...filters.features, feature],
+          updateFilters({
+            ...draftFilters,
+            features: draftFilters.features.includes(feature)
+              ? draftFilters.features.filter((item) => item !== feature)
+              : [...draftFilters.features, feature],
+            page: 1,
           })
         }
         onReset={() => {
-          replaceCatalogRoute(DEFAULT_CATALOG_FILTERS);
+          updateFilters(DEFAULT_CATALOG_FILTERS);
         }}
       />
+      <div className="flex justify-center pt-4">
+        <Pagination
+          current={currentPage}
+          total={products.length}
+          pageSize={PAGE_SIZE}
+          onChange={(page) =>
+            updateFilters({
+              ...draftFilters,
+              page,
+            })
+          }
+          showSizeChanger={false}
+        />
+      </div>
 
       <CatalogGrid products={pagedProducts} />
 
@@ -107,7 +129,12 @@ export function CatalogShowcase({
           current={currentPage}
           total={products.length}
           pageSize={PAGE_SIZE}
-          onChange={(page) => setCurrentPage(page)}
+          onChange={(page) =>
+            updateFilters({
+              ...draftFilters,
+              page,
+            })
+          }
           showSizeChanger={false}
         />
       </div>

@@ -15,6 +15,7 @@ export const DEFAULT_CATALOG_FILTERS: CatalogFilters = {
   area: null,
   features: [],
   sort: DEFAULT_CATALOG_SORT,
+  page: 1,
 };
 
 function getSingleValue(value: string | string[] | undefined) {
@@ -39,6 +40,12 @@ function isCatalogSort(value: string): value is CatalogSort {
 
 function normalizeQuery(query: string | undefined) {
   return query?.trim().slice(0, 100) ?? "";
+}
+
+function normalizePage(page: string | undefined) {
+  const numericPage = Number.parseInt(page ?? "", 10);
+
+  return Number.isFinite(numericPage) && numericPage > 0 ? numericPage : 1;
 }
 
 function getAreaWeight(area: string) {
@@ -83,12 +90,14 @@ export function parseCatalogFilters(
   const sortValue = getSingleValue(searchParams.sort);
   const sort =
     sortValue && isCatalogSort(sortValue) ? sortValue : DEFAULT_CATALOG_SORT;
+  const page = normalizePage(getSingleValue(searchParams.page));
 
   return {
     query,
     area,
     features,
     sort,
+    page,
   };
 }
 
@@ -151,6 +160,10 @@ export function createCatalogSearchParams(filters: CatalogFilters) {
 
   if (filters.sort !== DEFAULT_CATALOG_SORT) {
     params.set("sort", filters.sort);
+  }
+
+  if (filters.page > 1) {
+    params.set("page", String(filters.page));
   }
 
   return params.toString();
