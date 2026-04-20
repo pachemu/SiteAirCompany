@@ -9,7 +9,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "-": "^0.0.1",
     "@ant-design/icons": "^6.1.1",
     "@supabase/ssr": "^0.10.2",
     "@supabase/supabase-js": "^2.103.0",
