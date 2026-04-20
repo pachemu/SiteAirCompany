@@ -20,11 +20,12 @@ export function ContactCTA() {
             Нужна консультация по модели и монтажу?
           </Title>
           <Paragraph className="m-0 !text-slate-200">
-            Напишите в WhatsApp — ответим быстро, подберём кондиционер и озвучим
-            стоимость под ключ.
+            Напишите в WhatsApp, MAX, Telegram — ответим быстро, подберём
+            кондиционер и озвучим стоимость под ключ.
           </Paragraph>
           <div className="text-sm text-slate-200">
-            Телефон: <span className="font-semibold text-white">{PHONE_HUMAN}</span>
+            Телефон:{" "}
+            <span className="font-semibold text-white">{PHONE_HUMAN}</span>
           </div>
         </div>
 
@@ -53,4 +54,3 @@ export function ContactCTA() {
     </section>
   );
 }
-
