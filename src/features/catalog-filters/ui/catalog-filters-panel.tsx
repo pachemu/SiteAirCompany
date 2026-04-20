@@ -60,7 +60,7 @@ export function CatalogFiltersPanel({
               Найдено {resultCount} из {totalCount} моделей
             </p>
             <h2 className="text-2xl font-semibold tracking-tight">
-              Подберите кондиционер под свою площадь
+              Подберите кондиционер под свои нужды
             </h2>
           </div>
 
@@ -79,7 +79,7 @@ export function CatalogFiltersPanel({
 
         <div className="grid gap-4 xl:grid-cols-[minmax(0,2fr)_minmax(220px,1fr)_minmax(220px,1fr)]">
           <label className="flex flex-col gap-2 text-sm font-medium">
-            Поиск по названию и функциям
+            Поиск по названию и модели
             <Select
               showSearch={{ filterOption: false, onSearch: onSearchChange }}
               value={searchValue || undefined}
@@ -94,9 +94,9 @@ export function CatalogFiltersPanel({
           </label>
 
           <label className="flex flex-col gap-2 text-sm font-medium">
-            Площадь помещения
+            Тип кондиционера
             <Select
-              placeholder="Любая площадь"
+              placeholder="Стандарт"
               size="large"
               className="h-13 w-full"
               style={{ borderRadius: "1rem" }}
@@ -131,7 +131,7 @@ export function CatalogFiltersPanel({
         </div>
 
         <div className="space-y-3 p-2">
-          <p className="text-sm font-medium">Фильтрация по функциям</p>
+          <p className="text-sm font-medium pb-3">Фильтрация по функциям</p>
 
           <div className="flex flex-wrap gap-2">
             {filteredFeatures.map((feature) => {

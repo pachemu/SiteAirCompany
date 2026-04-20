@@ -56,6 +56,7 @@ export function getCatalogFilterOptions(
 
   const features = [...new Set(products.flatMap((product) => product.features))]
     .filter(Boolean)
+    .filter((feature) => !feature.includes("Фреон R32")) // лень из бд удалять
     .sort((left, right) => left.localeCompare(right, "ru"));
 
   return {

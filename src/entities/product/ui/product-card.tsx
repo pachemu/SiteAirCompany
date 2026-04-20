@@ -101,9 +101,9 @@ export function ProductCard({ product }: ProductCardProps) {
           </div>
         </div>
 
-        <div className="space-y-1 border-t pt-4">
+        <div className="space-y-1 border-t mt-4 pt-4">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Цена под ключ
+            Цена
           </p>
           <p className="text-2xl font-bold tracking-tight">
             {formatProductPrice(product.price)}

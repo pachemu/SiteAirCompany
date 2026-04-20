@@ -22,7 +22,7 @@ type CatalogShowcaseProps = {
   options: CatalogFilterOptions;
 };
 
-const PAGE_SIZE = 21;
+const PAGE_SIZE = 20;
 
 export function CatalogShowcase({
   products,

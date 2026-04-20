@@ -8,7 +8,7 @@ export function Header() {
     <header className="border-b bg-background">
       <div className="mx-auto flex min-h-15 flex-col gap-5 px-4 py-3 text-sm text-foreground md:flex-row md:items-center md:justify-around">
         <Link href="/" className="text-lg font-semibold tracking-tight">
-          Ионин кондиционер 82
+          Кондиционеры в Крыму
         </Link>
 
         <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-3">
