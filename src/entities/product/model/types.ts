@@ -9,6 +9,7 @@ export type Product = {
   price: number | string;
   features: string[];
   imageUrl: string | null;
+  description: string | null;
   createdAt: string | Date;
   name: string;
   area: string;

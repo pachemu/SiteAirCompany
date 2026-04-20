@@ -28,6 +28,8 @@ export const PRODUCTS_MOCK: Product[] = [
       "Самодиагностика",
     ],
     imageUrl: null,
+    description:
+      "Настенная сплит-система для квартир и домов с акцентом на тихую работу и стабильное охлаждение. Подходит для повседневного использования, поддерживает комфортный микроклимат в жаркий сезон и оснащена набором базовых интеллектуальных режимов.",
     createdAt: "2026-04-12T13:56:12.947Z",
     name: "Haier QUANTUM AS50HQJ2HRA-W 1U50HQJ2FRA",
     area: "Стандарт",
@@ -43,6 +45,8 @@ export const PRODUCTS_MOCK: Product[] = [
     price: 89000,
     features: ["Inverter", "Wi-Fi", "Обогрев", "Авторестарт"],
     imageUrl: PRODUCT_PLACEHOLDER_IMAGE,
+    description:
+      "Серия Diamond ориентирована на повышенный комфорт: плавное поддержание температуры, энергоэффективная работа и удобное управление. Хороший вариант для спальни, кабинета или гостиной, где важны тишина и аккуратный дизайн.",
     createdAt: "2026-04-11T09:12:00.000Z",
     name: "Mitsubishi Diamond MSZ-EF35VGK",
     area: "Комфорт",
@@ -58,6 +62,8 @@ export const PRODUCTS_MOCK: Product[] = [
     price: 102500,
     features: ["Интеллектуальный режим", "Тихий режим", "Самодиагностика"],
     imageUrl: PRODUCT_PLACEHOLDER_IMAGE,
+    description:
+      "Премиальная модель с точным контролем температуры и расширенной автоматикой. Подходит для пользователей, которым нужен уверенный запас по надежности, тихая работа и более гибкая адаптация под условия помещения.",
     createdAt: "2026-04-10T18:40:45.000Z",
     name: "Daikin FTXM35R/RXM35R",
     area: "Премиум",
@@ -73,6 +79,7 @@ export const PRODUCTS_MOCK: Product[] = [
     price: 69900,
     features: ["WindFree", "Wi-Fi", "Авторестарт"],
     imageUrl: PRODUCT_PLACEHOLDER_IMAGE,
+    description: null,
     createdAt: "2026-04-12T08:30:00.000Z",
     name: "Samsung WindFree AR12TXHQAWKNEU",
     area: "Стандарт",

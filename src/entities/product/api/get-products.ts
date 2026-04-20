@@ -36,6 +36,10 @@ function mapProductRow(row: Record<string, unknown>): Product {
       : String(row.price ?? "0"),
     features: parseFeatures(row.features),
     imageUrl: row.imageUrl == null ? null : String(row.imageUrl),
+    description:
+      typeof row.description === "string" && row.description.trim().length > 0
+        ? row.description.trim()
+        : null,
     createdAt:
       row.createdAt instanceof Date
         ? row.createdAt

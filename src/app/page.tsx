@@ -1,18 +1,16 @@
-import Link from "next/link";
+import { Benefits, CategoryGrid, ContactCTA, Hero } from "@/widgets/home";
 
 export default async function Home() {
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Добро пожаловать!</h1>
-        <p className="text-xl text-gray-600">
-          Перейдите в{" "}
-          <Link href="/catalog" className="text-blue-500 hover:underline">
-            каталог
-          </Link>{" "}
-          для просмотра товаров
-        </p>
+    <main className="flex flex-1 bg-slate-100">
+      <div className="mx-auto w-full max-w-6xl px-4 py-8 md:px-6 md:py-12 xl:px-8">
+        <div className="space-y-10">
+          <Hero />
+          <CategoryGrid />
+          <Benefits />
+          <ContactCTA />
+        </div>
       </div>
-    </div>
+    </main>
   );
 }

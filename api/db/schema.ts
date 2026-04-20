@@ -1,5 +1,4 @@
 import {
-  integer,
   numeric,
   pgTable,
   text,
@@ -19,5 +18,6 @@ export const productsTable = pgTable("products", {
   price: numeric("price", { precision: 12, scale: 2 }).notNull(),
   features: text("features"),
   imageUrl: text("image_url"),
+  description: text("description"),
   createdAt: timestamp("created_at").defaultNow(),
 });

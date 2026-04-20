@@ -5,7 +5,7 @@ import { EMAIL, PHONE_E164, PHONE_HUMAN } from "@/shared/config/contacts";
 
 export function Footer() {
   return (
-    <footer className="border-t bg-background">
+    <footer className="mt-8 border-t bg-background md:mt-10">
       <div className="mx-auto flex min-h-20 flex-col gap-6 px-4 py-6 md:flex-row md:items-center md:justify-around">
         <div className="text-lg font-semibold">
           Logo Ionin Conditioner Crimea

@@ -79,7 +79,7 @@ export function ProductSpecs({ product }: ProductSpecsProps) {
   ];
 
   return (
-    <div className="rounded-2xl border bg-card p-6">
+    <div className="w-full rounded-2xl border bg-card p-6 [&_.ant-descriptions]:w-full [&_.ant-descriptions-view]:w-full [&_.ant-descriptions-view>table]:w-full [&_.ant-descriptions-item-content]:break-words [&_.ant-descriptions-item-content]:whitespace-normal">
       <Descriptions
         title="Технические характеристики"
         column={1}

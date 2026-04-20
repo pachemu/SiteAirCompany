@@ -6,14 +6,14 @@ import Image from "next/image";
 export function ProductGallery({ images = [] }: { images?: string[] }) {
   if (!images || images.length === 0) {
     return (
-      <div className="h-full min-h-[500px] flex items-center justify-center bg-gray-50 rounded-2xl border">
+      <div className="flex h-full min-h-[420px] items-center justify-center rounded-2xl border bg-gray-50 lg:min-h-[620px] xl:min-h-[720px]">
         <span className="text-gray-400">Нет изображений</span>
       </div>
     );
   }
 
   return (
-    <div className="min-h-[500px] rounded-2xl overflow-hidden bg-gray-50 border">
+    <div className="overflow-hidden rounded-2xl border bg-gray-50">
       <Carousel
         arrows
         dots
@@ -30,15 +30,16 @@ export function ProductGallery({ images = [] }: { images?: string[] }) {
         {images.map((url, index) => (
           <div
             key={url || index}
-            className="h-full !flex min-h-[500px] p-6 flex items-center justify-center"
+            className="!flex h-full min-h-[420px] items-center justify-center p-4 md:p-6 lg:min-h-[620px] xl:min-h-[720px]"
           >
-            <div className="flex h-[600px] w-full items-center justify-center p-8">
+            <div className="flex h-full w-full items-center justify-center p-4 md:p-6 xl:p-8">
               <Image
                 src={url}
                 alt={`Фото товара ${index + 1}`}
                 width={1400}
                 height={900}
-                className="max-h-full w-auto object-contain"
+                className="h-full max-h-[680px] w-full object-contain"
+                sizes="(min-width: 1280px) 60vw, (min-width: 1024px) 58vw, 100vw"
                 priority={index === 0}
               />
             </div>
