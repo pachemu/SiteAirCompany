@@ -39,7 +39,7 @@ export function ProductCard({ product }: ProductCardProps) {
       }}
     >
       <div className="overflow-hidden border-b bg-muted/30">
-        <Carousel effect="fade" autoplay autoplaySpeed={3000}>
+        <Carousel effect="fade" autoplay autoplaySpeed={4000}>
           {finalImages.map((url, index) => (
             <div key={index}>
               <Image
