@@ -1,4 +1,24 @@
+import type { Metadata } from "next";
+
 import { Benefits, CategoryGrid, ContactCTA, Hero } from "@/widgets/home";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/shared/config/site";
+
+export const metadata: Metadata = {
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: "/",
+  },
+  twitter: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+};
 
 export default async function Home() {
   return (

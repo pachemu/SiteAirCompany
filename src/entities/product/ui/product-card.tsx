@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Card, Tag, Button, Carousel } from "antd";
+import { Button, Card, Carousel, Tag } from "antd";
 import { Phone } from "lucide-react";
-
-import { PHONE_E164 } from "@/shared/config/contacts";
 
 import { formatProductPrice } from "@/entities/product/lib/format-product-price";
 import type { Product } from "@/entities/product/model/types";
+import { PHONE_E164 } from "@/shared/config/contacts";
+import { BLUR_DATA_URL } from "@/shared/lib/image-placeholder";
 
 type ProductCardProps = {
   product: Product;
@@ -18,7 +18,14 @@ export function ProductCard({ product }: ProductCardProps) {
   const finalImages = rawImageUrl
     .split(",")
     .map((url) => url.trim())
-    .filter((url) => url.length > 0 && url.startsWith("http"));
+    .filter(
+      (url) => url.length > 0 && (url.startsWith("http") || url.startsWith("/")),
+    );
+
+  const galleryImages =
+    finalImages.length > 0
+      ? finalImages
+      : ["/images/products/catalog-product-placeholder.svg"];
 
   const featureLimit = 4;
   const featureItems = product.features.slice(0, featureLimit);
@@ -40,14 +47,17 @@ export function ProductCard({ product }: ProductCardProps) {
     >
       <div className="overflow-hidden border-b bg-muted/30">
         <Carousel effect="fade" autoplay autoplaySpeed={4000}>
-          {finalImages.map((url, index) => (
-            <div key={index}>
+          {galleryImages.map((url, index) => (
+            <div key={url || index}>
               <Image
                 src={url}
                 alt={`${product.model} - фото ${index + 1}`}
                 width={320}
                 height={280}
                 className="h-48 w-full object-contain"
+                sizes="(min-width: 1536px) 18vw, (min-width: 1280px) 20vw, (min-width: 1024px) 25vw, (min-width: 768px) 33vw, 100vw"
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
                 priority={index === 0}
               />
             </div>
@@ -62,7 +72,7 @@ export function ProductCard({ product }: ProductCardProps) {
               {product.category}
             </p>
             <Link href={`/catalog/${product.id}`}>
-              <h2 className="text-lg font-semibold leading-tight hover:text-primary transition-colors cursor-pointer">
+              <h2 className="text-lg font-semibold leading-tight transition-colors hover:text-primary cursor-pointer">
                 {product.brand} {product.series}
               </h2>
             </Link>

@@ -1,56 +1,12 @@
 import { PRODUCTS_MOCK } from "../model/products.mock";
 import type { Product } from "../model/types";
+import { parseProductFromRow } from "../model/product-row.schema";
 import { db } from "@/lib/db";
 import { productsTable } from "@/api/db/schema";
 import { getCacheValue, setCacheValue } from "@/lib/sqlite-cache";
 
 const PRODUCTS_CACHE_KEY = "products";
 const PRODUCTS_CACHE_TTL_SECONDS = 600;
-function parseFeatures(rawFeatures: unknown): string[] {
-  if (typeof rawFeatures === "string") {
-    return rawFeatures
-      .split(/\r?\n/)
-      .map((item) => item.trim())
-      .filter(Boolean);
-  }
-
-  if (Array.isArray(rawFeatures)) {
-    return rawFeatures.filter(Boolean).map(String);
-  }
-
-  return [];
-}
-
-function mapProductRow(row: Record<string, unknown>): Product {
-  const priceValue = row.price;
-  const price =
-    typeof priceValue === "string" ? Number(priceValue) : priceValue;
-
-  return {
-    id: String(row.id),
-    category: String(row.category ?? ""),
-    brand: String(row.brand ?? ""),
-    series: String(row.series ?? ""),
-    model: String(row.model ?? ""),
-    power: String(row.power ?? ""),
-    energyClass: String(row.energyClass ?? ""),
-    price: Number.isFinite(price as number)
-      ? (price as number)
-      : String(row.price ?? "0"),
-    features: parseFeatures(row.features),
-    imageUrl: row.imageUrl == null ? null : String(row.imageUrl),
-    description:
-      typeof row.description === "string" && row.description.trim().length > 0
-        ? row.description.trim()
-        : null,
-    createdAt:
-      row.createdAt instanceof Date
-        ? row.createdAt
-        : String(row.createdAt ?? ""),
-    name: `${String(row.brand ?? "")} ${String(row.series ?? "")} ${String(row.model ?? "")}`.trim(),
-    area: String(row.category ?? ""),
-  };
-}
 
 export async function getProducts(): Promise<Product[]> {
   try {
@@ -64,7 +20,9 @@ export async function getProducts(): Promise<Product[]> {
   }
   try {
     const rows = await db.select().from(productsTable);
-    const mapped = rows.map(mapProductRow);
+    const mapped = rows
+      .map((row) => parseProductFromRow(row))
+      .filter((product): product is Product => product !== null);
 
     try {
       await setCacheValue(PRODUCTS_CACHE_KEY, mapped, PRODUCTS_CACHE_TTL_SECONDS);

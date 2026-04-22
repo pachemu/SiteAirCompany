@@ -1,4 +1,5 @@
 import type { Product } from "@/entities/product";
+import { z } from "zod";
 
 import {
   CATALOG_SORT_OPTIONS,
@@ -18,9 +19,13 @@ export const DEFAULT_CATALOG_FILTERS: CatalogFilters = {
   page: 1,
 };
 
-function getSingleValue(value: string | string[] | undefined) {
-  return Array.isArray(value) ? value[0] : value;
-}
+const catalogSearchParamsSchema = z.object({
+  q: z.string().trim().max(100).optional().catch(""),
+  area: z.string().optional().nullable().catch(undefined),
+  feature: z.union([z.string(), z.array(z.string())]).optional(),
+  sort: z.enum(CATALOG_SORT_OPTIONS.map((option) => option.value)).optional(),
+  page: z.coerce.number().int().positive().optional().catch(1),
+});
 
 function getMultipleValues(value: string | string[] | undefined) {
   if (Array.isArray(value)) {
@@ -76,21 +81,22 @@ export function parseCatalogFilters(
   searchParams: CatalogPageSearchParams,
   options: CatalogFilterOptions,
 ): CatalogFilters {
-  const query = normalizeQuery(getSingleValue(searchParams.q));
+  const parsedSearchParams = catalogSearchParamsSchema.parse(searchParams);
+  const query = normalizeQuery(parsedSearchParams.q);
 
-  const areaValue = getSingleValue(searchParams.area);
+  const areaValue = parsedSearchParams.area;
   const area =
     areaValue && options.areas.includes(areaValue) ? areaValue : null;
 
-  const featureValues = getMultipleValues(searchParams.feature);
+  const featureValues = getMultipleValues(parsedSearchParams.feature);
   const features = [...new Set(featureValues)].filter((feature) =>
     options.features.includes(feature),
   );
 
-  const sortValue = getSingleValue(searchParams.sort);
+  const sortValue = parsedSearchParams.sort;
   const sort =
     sortValue && isCatalogSort(sortValue) ? sortValue : DEFAULT_CATALOG_SORT;
-  const page = normalizePage(getSingleValue(searchParams.page));
+  const page = normalizePage(String(parsedSearchParams.page ?? 1));
 
   return {
     query,
