@@ -9,8 +9,11 @@ import {
   CatalogFiltersPanel,
   createCatalogSearchParams,
   DEFAULT_CATALOG_FILTERS,
+  filterAndSortProducts,
+  parseCatalogFilters,
   type CatalogFilterOptions,
   type CatalogFilters,
+  type CatalogPageSearchParams,
 } from "@/features/catalog-filters";
 
 import { CatalogGrid } from "./catalog-grid";
@@ -24,6 +27,18 @@ type CatalogShowcaseProps = {
 
 const PAGE_SIZE = 20;
 
+function getCatalogPageSearchParams() {
+  const params = new URLSearchParams(window.location.search);
+
+  return {
+    q: params.get("q") ?? undefined,
+    area: params.get("area") ?? undefined,
+    feature: params.getAll("feature"),
+    sort: params.get("sort") ?? undefined,
+    page: params.get("page") ?? undefined,
+  } satisfies CatalogPageSearchParams;
+}
+
 export function CatalogShowcase({
   products,
   totalProducts,
@@ -36,16 +51,22 @@ export function CatalogShowcase({
   const [draftFilters, setDraftFilters] = useState(filters);
 
   useEffect(() => {
-    setDraftFilters(filters);
-  }, [filters]);
+    const nextFilters = parseCatalogFilters(getCatalogPageSearchParams(), options);
+    setDraftFilters(nextFilters);
+  }, [options]);
 
-  const totalPages = Math.max(1, Math.ceil(products.length / PAGE_SIZE));
+  const filteredProducts = useMemo(
+    () => filterAndSortProducts(products, draftFilters),
+    [draftFilters, products],
+  );
+
+  const totalPages = Math.max(1, Math.ceil(filteredProducts.length / PAGE_SIZE));
   const currentPage = Math.min(draftFilters.page, totalPages);
 
   const pagedProducts = useMemo(() => {
     const start = (currentPage - 1) * PAGE_SIZE;
-    return products.slice(start, start + PAGE_SIZE);
-  }, [currentPage, products]);
+    return filteredProducts.slice(start, start + PAGE_SIZE);
+  }, [currentPage, filteredProducts]);
 
   function replaceCatalogRoute(nextFilters: CatalogFilters) {
     const currentPathname = pathname ?? "/catalog";
@@ -70,7 +91,7 @@ export function CatalogShowcase({
         filters={draftFilters}
         searchValue={draftFilters.query}
         options={options}
-        resultCount={products.length}
+        resultCount={filteredProducts.length}
         totalCount={totalProducts}
         isPending={isPending}
         onSearchChange={(query) =>
@@ -110,7 +131,7 @@ export function CatalogShowcase({
       <div className="flex justify-center pt-4">
         <Pagination
           current={currentPage}
-          total={products.length}
+          total={filteredProducts.length}
           pageSize={PAGE_SIZE}
           onChange={(page) =>
             updateFilters({
@@ -127,7 +148,7 @@ export function CatalogShowcase({
       <div className="flex justify-center pt-4">
         <Pagination
           current={currentPage}
-          total={products.length}
+          total={filteredProducts.length}
           pageSize={PAGE_SIZE}
           onChange={(page) =>
             updateFilters({

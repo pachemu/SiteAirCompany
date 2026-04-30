@@ -1,6 +1,15 @@
+import { getProducts } from "@/entities/product/api";
 import { getProductById } from "@/entities/product/api/get-product-by-id";
 import { ProductDetailsWidget } from "@/widgets/product-details";
 import { notFound } from "next/navigation";
+
+export async function generateStaticParams() {
+  const products = await getProducts();
+
+  return products.map((product) => ({
+    id: product.id,
+  }));
+}
 
 export default async function Page({
   params,

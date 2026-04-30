@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+import { localizeProductImageUrls } from "@/shared/lib/product-image-url";
 import type { Product } from "./types";
 
 function parseFeatures(rawFeatures: unknown): string[] {
@@ -54,7 +55,7 @@ export function parseProductFromRow(row: unknown): Product | null {
     energyClass: data.energyClass ?? "",
     price: Number.isFinite(numericPrice) ? numericPrice : String(rawPrice),
     features: parseFeatures(data.features),
-    imageUrl: data.imageUrl ?? null,
+    imageUrl: localizeProductImageUrls(data.imageUrl ?? null),
     description:
       typeof data.description === "string" && data.description.trim().length > 0
         ? data.description.trim()

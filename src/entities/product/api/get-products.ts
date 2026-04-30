@@ -3,33 +3,45 @@ import type { Product } from "../model/types";
 import { parseProductFromRow } from "../model/product-row.schema";
 import { db } from "@/lib/db";
 import { productsTable } from "@/api/db/schema";
-import { getCacheValue, setCacheValue } from "@/lib/sqlite-cache";
 
-const PRODUCTS_CACHE_KEY = "products";
-const PRODUCTS_CACHE_TTL_SECONDS = 600;
+function canUseMockProducts() {
+  return process.env.NODE_ENV !== "production";
+}
+
+function getProductsErrorMessage(reason: string) {
+  return [
+    `Cannot load real products: ${reason}.`,
+    "Static export must be built with DATABASE_URL configured.",
+    "Add DATABASE_URL to .env.local or pass it when running npm run export.",
+  ].join(" ");
+}
 
 export async function getProducts(): Promise<Product[]> {
-  try {
-    const cached = await getCacheValue<Product[]>(PRODUCTS_CACHE_KEY);
-    if (cached) {
-      return cached;
-    }
-  } catch {}
   if (!db) {
-    return PRODUCTS_MOCK;
+    if (canUseMockProducts()) {
+      return PRODUCTS_MOCK;
+    }
+
+    throw new Error(getProductsErrorMessage("DATABASE_URL is missing"));
   }
+
   try {
     const rows = await db.select().from(productsTable);
     const mapped = rows
       .map((row) => parseProductFromRow(row))
       .filter((product): product is Product => product !== null);
 
-    try {
-      await setCacheValue(PRODUCTS_CACHE_KEY, mapped, PRODUCTS_CACHE_TTL_SECONDS);
-    } catch {}
+    if (mapped.length === 0 && !canUseMockProducts()) {
+      throw new Error(getProductsErrorMessage("products table is empty"));
+    }
 
     return mapped;
-  } catch {
+  } catch (error) {
+    if (!canUseMockProducts()) {
+      const message = error instanceof Error ? error.message : "unknown error";
+      throw new Error(getProductsErrorMessage(message));
+    }
+
     return PRODUCTS_MOCK;
   }
 }
