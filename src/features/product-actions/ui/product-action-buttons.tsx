@@ -3,7 +3,7 @@
 import { Button } from "antd";
 import { MessageCircle, Phone } from "lucide-react";
 
-import { PHONE_E164, WHATSAPP_LINK } from "@/shared/config/contacts";
+import { PHONE_E164, TELEGRAM_LINK } from "@/shared/config/contacts";
 
 export function ProductActionButtons() {
   return (
@@ -13,7 +13,7 @@ export function ProductActionButtons() {
         size="large"
         icon={<MessageCircle className="h-4 w-4" />}
         className="flex-1"
-        href={WHATSAPP_LINK}
+        href={TELEGRAM_LINK}
         target="_blank"
         rel="noopener noreferrer"
       >

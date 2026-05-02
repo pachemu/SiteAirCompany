@@ -24,7 +24,7 @@ const BENEFITS: Benefit[] = [
   },
   {
     title: "Бесплатный выезд",
-    description: "Осмотр и рекомендации по месту, без навязанных услуг.",
+    description: "Осмотр и рекомендации по месту.",
     icon: <CarOutlined className="text-2xl text-blue-900" />,
   },
   {
@@ -72,4 +72,3 @@ export function Benefits() {
     </section>
   );
 }
-

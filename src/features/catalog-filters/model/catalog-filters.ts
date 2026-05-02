@@ -2,7 +2,8 @@ import type { Product } from "@/entities/product";
 import { z } from "zod";
 
 import {
-  CATALOG_SORT_OPTIONS,
+  CATALOG_SORT_POWER_OPTIONS,
+  CATALOG_SORT_PRICE_OPTIONS,
   type CatalogFilterOptions,
   type CatalogFilters,
   type CatalogPageSearchParams,
@@ -23,7 +24,13 @@ const catalogSearchParamsSchema = z.object({
   q: z.string().trim().max(100).optional().catch(""),
   area: z.string().optional().nullable().catch(undefined),
   feature: z.union([z.string(), z.array(z.string())]).optional(),
-  sort: z.enum(CATALOG_SORT_OPTIONS.map((option) => option.value)).optional(),
+  sort: z
+    .enum(
+      [...CATALOG_SORT_PRICE_OPTIONS, ...CATALOG_SORT_POWER_OPTIONS].map(
+        (option) => option.value,
+      ),
+    )
+    .optional(),
   page: z.coerce.number().int().positive().optional().catch(1),
 });
 
@@ -40,7 +47,9 @@ function getMultipleValues(value: string | string[] | undefined) {
 }
 
 function isCatalogSort(value: string): value is CatalogSort {
-  return CATALOG_SORT_OPTIONS.some((option) => option.value === value);
+  return [...CATALOG_SORT_PRICE_OPTIONS, ...CATALOG_SORT_POWER_OPTIONS].some(
+    (option) => option.value === value,
+  );
 }
 
 function normalizeQuery(query: string | undefined) {
@@ -133,14 +142,45 @@ export function filterAndSortProducts(
   const normalizePrice = (price: number | string) =>
     typeof price === "string" ? Number(price.replace(/[^0-9.-]+/g, "")) : price;
 
+  const normalizePower = (power: string) => {
+    const normalizedPower = power.replace(",", ".");
+    const match = normalizedPower.match(/\d+(?:\.\d+)?/);
+
+    return match ? Number(match[0]) : null;
+  };
+
   if (filters.sort !== "default") {
     filteredProducts.sort((left, right) => {
-      const leftPrice = normalizePrice(left.price);
-      const rightPrice = normalizePrice(right.price);
+      if (filters.sort === "power-desc" || filters.sort === "power-asc") {
+        const leftPower = normalizePower(left.power);
+        const rightPower = normalizePower(right.power);
+
+        if (leftPower === null && rightPower === null) {
+          return 0;
+        }
+
+        if (leftPower === null) {
+          return 1;
+        }
+
+        if (rightPower === null) {
+          return -1;
+        }
+
+        return filters.sort === "power-desc"
+          ? rightPower - leftPower
+          : leftPower - rightPower;
+      }
 
       if (filters.sort === "price-desc") {
+        const leftPrice = normalizePrice(left.price);
+        const rightPrice = normalizePrice(right.price);
+
         return rightPrice - leftPrice;
       }
+
+      const leftPrice = normalizePrice(left.price);
+      const rightPrice = normalizePrice(right.price);
 
       return leftPrice - rightPrice;
     });

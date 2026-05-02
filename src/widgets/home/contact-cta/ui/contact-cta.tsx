@@ -6,7 +6,7 @@ import { MessageOutlined, PhoneOutlined } from "@ant-design/icons";
 import {
   PHONE_E164,
   PHONE_HUMAN,
-  WHATSAPP_LINK,
+  TELEGRAM_LINK,
 } from "@/shared/config/contacts";
 
 const { Title, Paragraph } = Typography;
@@ -34,12 +34,12 @@ export function ContactCTA() {
             type="primary"
             size="large"
             icon={<MessageOutlined />}
-            href={WHATSAPP_LINK}
+            href={TELEGRAM_LINK}
             target="_blank"
             rel="noopener noreferrer"
             className="h-11 rounded-2xl bg-white text-blue-950 hover:!bg-slate-100"
           >
-            Написать в WhatsApp
+            Написать в Telegram
           </Button>
           <Button
             size="large"

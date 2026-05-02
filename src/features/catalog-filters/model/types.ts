@@ -1,4 +1,4 @@
-export const CATALOG_SORT_OPTIONS = [
+export const CATALOG_SORT_PRICE_OPTIONS = [
   {
     value: "default",
     label: "По умолчанию",
@@ -13,7 +13,28 @@ export const CATALOG_SORT_OPTIONS = [
   },
 ] as const;
 
-export type CatalogSort = (typeof CATALOG_SORT_OPTIONS)[number]["value"];
+export type CatalogSortPrice =
+  (typeof CATALOG_SORT_PRICE_OPTIONS)[number]["value"];
+
+export const CATALOG_SORT_POWER_OPTIONS = [
+  {
+    value: "default",
+    label: "По умолчанию",
+  },
+  {
+    value: "power-desc",
+    label: "Сначала мощнее",
+  },
+  {
+    value: "power-asc",
+    label: "Сначала слабее",
+  },
+] as const;
+
+export type CatalogSortPower =
+  (typeof CATALOG_SORT_POWER_OPTIONS)[number]["value"];
+
+export type CatalogSort = CatalogSortPrice | CatalogSortPower;
 
 export type CatalogFilters = {
   query: string;

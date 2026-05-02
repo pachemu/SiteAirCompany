@@ -6,7 +6,7 @@ export {
   parseCatalogFilters,
 } from "./model/catalog-filters";
 export {
-  CATALOG_SORT_OPTIONS,
+  CATALOG_SORT_PRICE_OPTIONS as CATALOG_SORT_OPTIONS,
   type CatalogFilterOptions,
   type CatalogFilters,
   type CatalogPageSearchParams,

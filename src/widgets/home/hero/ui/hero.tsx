@@ -28,13 +28,16 @@ export function Hero() {
             Крым · Подбор · Монтаж · Сервис
           </div>
 
-          <Title level={1} className="m-0 !text-3xl md:!text-5xl !text-slate-900">
+          <Title
+            level={1}
+            className="m-0 !text-3xl md:!text-5xl !text-slate-900"
+          >
             Профессиональный климат в вашем доме под ключ
           </Title>
 
           <Paragraph className="m-0 !text-base md:!text-lg !text-slate-600">
-            Продажа, установка и обслуживание кондиционеров в Крыму. Официальная
-            гарантия 3 года
+            Продажа, установка кондиционеров в Крыму. Официальная гарантия 3
+            года
           </Paragraph>
 
           <div className="flex flex-col gap-3 sm:flex-row">
@@ -73,7 +76,7 @@ export function Hero() {
           <div className="absolute -inset-8 bg-[radial-gradient(circle_at_top,_rgba(37,99,235,0.18),_transparent_55%)]" />
           <div className="relative w-full max-w-[560px]">
             <Image
-              src={`data:image/svg+xml;charset=utf-8,${HERO_IMAGE_SVG}`}
+              src={"/images/products/conditioner_air.png"}
               alt="Современный кондиционер"
               width={1200}
               height={800}
@@ -86,4 +89,3 @@ export function Hero() {
     </section>
   );
 }
-

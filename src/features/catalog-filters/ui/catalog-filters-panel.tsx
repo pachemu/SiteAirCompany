@@ -1,5 +1,6 @@
 import {
-  CATALOG_SORT_OPTIONS,
+  CATALOG_SORT_POWER_OPTIONS,
+  CATALOG_SORT_PRICE_OPTIONS,
   type CatalogFilterOptions,
   type CatalogFilters,
 } from "../model/types";
@@ -51,6 +52,18 @@ export function CatalogFiltersPanel({
   const onChangeSelect = (event: string) => {
     onAreaChange(event);
   };
+
+  const priceSortValue = CATALOG_SORT_PRICE_OPTIONS.some(
+    (option) => option.value === filters.sort,
+  )
+    ? filters.sort
+    : "default";
+  const powerSortValue = CATALOG_SORT_POWER_OPTIONS.some(
+    (option) => option.value === filters.sort,
+  )
+    ? filters.sort
+    : "default";
+
   return (
     <section className="rounded-[2rem] border bg-card/80 p-5 shadow-sm backdrop-blur md:p-6">
       <div className="flex flex-col gap-5">
@@ -77,7 +90,7 @@ export function CatalogFiltersPanel({
           </div>
         </div>
 
-        <div className="grid gap-4 xl:grid-cols-[minmax(0,2fr)_minmax(220px,1fr)_minmax(220px,1fr)]">
+        <div className="grid gap-4 xl:grid-cols-[minmax(0,2fr)_repeat(3,minmax(220px,1fr))]">
           <label className="flex flex-col gap-2 text-sm font-medium">
             Поиск по названию и модели
             <Select
@@ -111,18 +124,33 @@ export function CatalogFiltersPanel({
               value={filters.area || undefined}
             />
           </label>
-
+          <label className="flex flex-col gap-2 text-sm font-medium">
+            Сортировка по мощности
+            <Select
+              size="large"
+              className="h-13 w-full"
+              style={{ borderRadius: "1rem" }}
+              value={powerSortValue}
+              onChange={(value) =>
+                onSortChange(value as CatalogFilters["sort"])
+              }
+              options={CATALOG_SORT_POWER_OPTIONS.map((opt) => ({
+                label: opt.label,
+                value: opt.value,
+              }))}
+            />
+          </label>
           <label className="flex flex-col gap-2 text-sm font-medium">
             Сортировка по цене
             <Select
               size="large"
               className="h-13 w-full"
               style={{ borderRadius: "1rem" }}
-              value={filters.sort}
+              value={priceSortValue}
               onChange={(value) =>
                 onSortChange(value as CatalogFilters["sort"])
               }
-              options={CATALOG_SORT_OPTIONS.map((opt) => ({
+              options={CATALOG_SORT_PRICE_OPTIONS.map((opt) => ({
                 label: opt.label,
                 value: opt.value,
               }))}
