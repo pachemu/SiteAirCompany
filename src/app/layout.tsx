@@ -12,6 +12,7 @@ import {
 } from "@/shared/config/site";
 
 import "./globals.css";
+import { Metrica } from "@/widgets/metrica/metrica";
 
 export const metadata: Metadata = {
   metadataBase: SITE_URL,
@@ -55,6 +56,7 @@ export default function RootLayout({
   return (
     <html lang="ru" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
+        <Metrica />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

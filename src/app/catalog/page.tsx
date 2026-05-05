@@ -10,7 +10,7 @@ export default async function CatalogPage() {
   const filterOptions = getCatalogFilterOptions(products);
 
   return (
-    <main className="flex flex-1 bg-[radial-gradient(circle_at_top,_rgba(15,23,42,0.06),_transparent_40%),linear-gradient(180deg,_rgba(248,250,252,1)_0%,_rgba(241,245,249,0.9)_100%)]">
+    <main className="flex flex-1 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.12),_transparent_40%),linear-gradient(180deg,_rgba(248,250,252,1)_0%,_rgba(226,232,240,0.72)_100%)] text-[#0F172A]">
       <div className="mx-auto flex w-full flex-1 flex-col gap-8 px-4 py-8 md:px-6 xl:px-8">
         <CatalogShowcase
           products={products}

@@ -7,9 +7,9 @@ type CatalogGridProps = {
 export function CatalogGrid({ products }: CatalogGridProps) {
   if (products.length === 0) {
     return (
-      <div className="rounded-3xl border border-dashed bg-card/50 px-6 py-16 text-center">
+      <div className="rounded-3xl border border-dashed border-[#CBD5E1] bg-[#E2E8F0]/60 px-6 py-16 text-center text-[#0F172A]">
         <h3 className="text-2xl font-semibold tracking-tight">Товары не найдены</h3>
-        <p className="mt-3 text-muted-foreground">
+        <p className="mt-3 text-[#475569]">
           Попробуйте убрать часть фильтров или изменить поисковый запрос.
         </p>
       </div>

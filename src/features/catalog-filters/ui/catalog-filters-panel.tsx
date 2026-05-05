@@ -65,11 +65,11 @@ export function CatalogFiltersPanel({
     : "default";
 
   return (
-    <section className="rounded-[2rem] border bg-card/80 p-5 shadow-sm backdrop-blur md:p-6">
+    <section className="rounded-[2rem] border border-[#CBD5E1] bg-[#E2E8F0]/80 p-5 text-[#0F172A] shadow-sm backdrop-blur md:p-6">
       <div className="flex flex-col gap-5">
         <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
           <div className="space-y-1">
-            <p className="text-sm font-medium text-muted-foreground">
+            <p className="text-sm font-medium text-[#475569]">
               Найдено {resultCount} из {totalCount} моделей
             </p>
             <h2 className="text-2xl font-semibold tracking-tight">
@@ -79,7 +79,7 @@ export function CatalogFiltersPanel({
 
           <div className="flex items-center gap-3">
             {isPending ? (
-              <span className="text-sm text-muted-foreground">
+              <span className="text-sm text-[#475569]">
                 Обновляем каталог...
               </span>
             ) : null}
@@ -101,7 +101,7 @@ export function CatalogFiltersPanel({
               suffixIcon={null}
               onChange={(value) => onSearchChange(value)}
               notFoundContent={null}
-              className="h-13 rounded-2xl border bg-background px-2"
+              className="h-13 rounded-2xl border border-[#CBD5E1] bg-[#F8FAFC] px-2"
               allowClear
             />
           </label>
@@ -170,7 +170,11 @@ export function CatalogFiltersPanel({
                   key={feature}
                   type={isActive ? "primary" : "default"}
                   onClick={() => onFeatureToggle(feature)}
-                  className="bg-lightgray"
+                  className={
+                    isActive
+                      ? "bg-[#38BDF8] text-[#0F172A]"
+                      : "bg-[#F8FAFC] text-[#0F172A] hover:!border-[#38BDF8] hover:!text-[#0284C7]"
+                  }
                 >
                   {feature}
                 </Button>

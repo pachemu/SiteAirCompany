@@ -8,20 +8,20 @@ import { BLUR_DATA_URL } from "@/shared/lib/image-placeholder";
 export function ProductGallery({ images = [] }: { images?: string[] }) {
   if (!images || images.length === 0) {
     return (
-      <div className="flex h-full min-h-[420px] items-center justify-center rounded-2xl border bg-gray-50 lg:min-h-[620px] xl:min-h-[720px]">
-        <span className="text-gray-400">Нет изображений</span>
+      <div className="flex h-full min-h-[420px] items-center justify-center rounded-2xl border border-[#CBD5E1] bg-[#E2E8F0] shadow-sm lg:min-h-[620px] xl:min-h-[720px]">
+        <span className="text-[#64748B]">Нет изображений</span>
       </div>
     );
   }
 
   return (
-    <div className="overflow-hidden rounded-2xl border bg-gray-50">
+    <div className="overflow-hidden rounded-2xl border border-[#CBD5E1] bg-[#E2E8F0] shadow-sm">
       <Carousel
         arrows
         dots
         draggable
         infinite
-        className="h-full [&_.slick-track]:h-full [&_.slick-list]:h-full [&_.slick-slide>div]:h-full [&_.slick-dots_li_button]:bg-black [&_.slick-dots_li_button]:opacity-30 [&_.slick-dots_li.slick-active_button]:bg-blue-600 [&_.slick-dots_li.slick-active_button]:opacity-100 [&_.slick-dots_li_button]:h-1.5 [&_.slick-dots_li_button]:rounded-full"
+        className="h-full [&_.slick-track]:h-full [&_.slick-list]:h-full [&_.slick-slide>div]:h-full [&_.slick-dots_li_button]:bg-[#0F172A] [&_.slick-dots_li_button]:opacity-30 [&_.slick-dots_li.slick-active_button]:bg-[#38BDF8] [&_.slick-dots_li.slick-active_button]:opacity-100 [&_.slick-dots_li_button]:h-1.5 [&_.slick-dots_li_button]:rounded-full"
       >
         {images.map((url, index) => (
           <div

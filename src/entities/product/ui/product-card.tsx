@@ -34,7 +34,7 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <Card
       hoverable
-      className="min-w-0 h-full min-h-[34rem] flex flex-col overflow-hidden rounded-3xl shadow-sm"
+      className="min-w-0 h-full min-h-[34rem] flex flex-col overflow-hidden rounded-3xl border-[#CBD5E1] bg-[#E2E8F0] shadow-sm"
       styles={{
         body: {
           padding: 0,
@@ -42,10 +42,11 @@ export function ProductCard({ product }: ProductCardProps) {
           display: "flex",
           flexDirection: "column",
           height: "100%",
+          backgroundColor: "#E2E8F0",
         },
       }}
     >
-      <div className="overflow-hidden border-b bg-muted/30">
+      <div className="overflow-hidden border-b border-[#CBD5E1] bg-[#F8FAFC]">
         <Carousel effect="fade" autoplay autoplaySpeed={4000}>
           {galleryImages.map((url, index) => (
             <div key={url || index}>
@@ -72,7 +73,7 @@ export function ProductCard({ product }: ProductCardProps) {
               {product.category}
             </p>
             <Link href={`/catalog/${product.id}`}>
-              <h2 className="text-lg font-semibold leading-tight transition-colors hover:text-primary cursor-pointer">
+              <h2 className="text-lg font-semibold leading-tight text-[#0F172A] transition-colors hover:text-[#38BDF8] cursor-pointer">
                 {product.brand} {product.series}
               </h2>
             </Link>
@@ -111,7 +112,7 @@ export function ProductCard({ product }: ProductCardProps) {
           </div>
         </div>
 
-        <div className="space-y-1 border-t mt-4 pt-4">
+          <div className="space-y-1 border-t border-[#CBD5E1] mt-4 pt-4">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Цена
           </p>
@@ -121,7 +122,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
       </div>
 
-      <div className="flex items-center justify-between gap-3 border-t p-4">
+      <div className="flex items-center justify-between gap-3 border-t border-[#CBD5E1] p-4">
         <span className="text-sm text-muted-foreground">
           Монтаж и консультация
         </span>

@@ -12,8 +12,8 @@ export function ProductDescription({ product }: ProductDescriptionProps) {
   }
 
   return (
-    <section className="w-full rounded-2xl border bg-card p-6">
-      <div className="mb-4 border-b pb-3">
+    <section className="w-full rounded-2xl border border-[#CBD5E1] bg-[#E2E8F0] p-6 shadow-sm">
+      <div className="mb-4 border-b border-[#CBD5E1] pb-3">
         <h3 className="text-xl font-semibold tracking-tight">Описание</h3>
       </div>
 

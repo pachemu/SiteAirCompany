@@ -164,24 +164,24 @@ a {
 :root {
   --app-font-sans: Arial, Helvetica, sans-serif;
   --app-font-mono: "Courier New", Courier, monospace;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #e2e8f0;
+  --card-foreground: #0f172a;
+  --popover: #f8fafc;
+  --popover-foreground: #0f172a;
+  --primary: #38bdf8;
+  --primary-foreground: #0f172a;
+  --secondary: #e2e8f0;
+  --secondary-foreground: #0f172a;
+  --muted: #e2e8f0;
+  --muted-foreground: #475569;
+  --accent: #38bdf8;
+  --accent-foreground: #0f172a;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: #cbd5e1;
+  --input: #cbd5e1;
+  --ring: #38bdf8;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -241,5 +241,37 @@ a {
   }
   html {
     @apply font-sans;
+  }
+}
+
+@layer components {
+  .ant-btn-primary {
+    background: #38bdf8;
+    border-color: #38bdf8;
+    color: #0f172a;
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.08);
+  }
+
+  .ant-btn-primary:not(:disabled):not(.ant-btn-disabled):hover,
+  .ant-btn-primary:not(:disabled):not(.ant-btn-disabled):focus-visible {
+    background: #0ea5e9;
+    border-color: #0ea5e9;
+    color: #0f172a;
+  }
+
+  .ant-select-focused .ant-select-selector,
+  .ant-select-selector:focus,
+  .ant-select-selector:focus-within {
+    border-color: #38bdf8 !important;
+    box-shadow: 0 0 0 2px rgb(56 189 248 / 0.16) !important;
+  }
+
+  .ant-pagination .ant-pagination-item-active {
+    border-color: #38bdf8;
+  }
+
+  .ant-pagination .ant-pagination-item-active a,
+  .ant-pagination .ant-pagination-item-active:hover a {
+    color: #0284c7;
   }
 }

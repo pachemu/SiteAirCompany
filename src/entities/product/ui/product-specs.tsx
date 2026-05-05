@@ -71,7 +71,7 @@ export function ProductSpecs({ product }: ProductSpecsProps) {
       label: "Особенности",
       children:
         features.length === 0 ? (
-          <span className="text-muted-foreground">—</span>
+          <span className="text-[#475569]">—</span>
         ) : (
           <span className="m-0 pl-5 space-y-1">{features.join(", ")}</span>
         ),
@@ -79,7 +79,7 @@ export function ProductSpecs({ product }: ProductSpecsProps) {
   ];
 
   return (
-    <div className="w-full rounded-2xl border bg-card p-6 [&_.ant-descriptions]:w-full [&_.ant-descriptions-view]:w-full [&_.ant-descriptions-view>table]:w-full [&_.ant-descriptions-item-content]:break-words [&_.ant-descriptions-item-content]:whitespace-normal">
+    <div className="w-full rounded-2xl border border-[#CBD5E1] bg-[#E2E8F0] p-6 shadow-sm [&_.ant-descriptions]:w-full [&_.ant-descriptions-view]:w-full [&_.ant-descriptions-view>table]:w-full [&_.ant-descriptions-item-content]:break-words [&_.ant-descriptions-item-content]:whitespace-normal">
       <Descriptions
         title="Технические характеристики"
         column={1}

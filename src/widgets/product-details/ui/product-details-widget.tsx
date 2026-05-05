@@ -30,7 +30,7 @@ export function ProductDetailsWidget({ product }: ProductDetailsWidgetProps) {
     );
 
   return (
-    <div className="bg-background py-10 pb-16 md:py-12 md:pb-24">
+    <div className="bg-[#F8FAFC] py-10 pb-16 text-[#0F172A] md:py-12 md:pb-24">
       <div className="mx-auto w-full px-4 md:px-6 xl:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start lg:gap-10 xl:gap-12">
           <div className="lg:col-span-6 xl:col-span-7 lg:sticky lg:top-24 lg:h-[calc(100vh-7rem)]">
@@ -38,8 +38,8 @@ export function ProductDetailsWidget({ product }: ProductDetailsWidgetProps) {
           </div>
           <div className="flex w-full min-w-0 flex-col gap-6 lg:col-span-6 xl:col-span-5">
             <ProductMainHeader product={product} />
-            <div className="w-full rounded-2xl border bg-card p-6">
-              <div className="text-sm text-muted-foreground mb-1">Цена</div>
+            <div className="w-full rounded-2xl border border-[#CBD5E1] bg-[#E2E8F0] p-6 shadow-sm">
+              <div className="text-sm text-[#475569] mb-1">Цена</div>
               <div className="text-3xl font-semibold leading-tight">
                 {hasPrice(product.price)
                   ? formatProductPrice(product.price)

@@ -5,9 +5,9 @@ import { EMAIL, PHONE_E164, PHONE_HUMAN } from "@/shared/config/contacts";
 
 export function Header() {
   return (
-    <header className="border-b bg-background">
+    <header className="border-b border-[#CBD5E1] bg-[#F8FAFC]/95 backdrop-blur">
       <div className="mx-auto flex min-h-15 flex-col gap-5 px-4 py-3 text-sm text-foreground md:flex-row md:items-center md:justify-around">
-        <Link href="/" className="text-lg font-semibold tracking-tight">
+        <Link href="/" className="text-lg font-semibold tracking-tight text-[#0F172A]">
           Кондиционеры в Крыму
         </Link>
 
@@ -23,7 +23,7 @@ export function Header() {
           <Button
             asChild
             variant="link"
-            className="h-auto justify-start p-0 md:justify-end"
+            className="h-auto justify-start p-0 text-[#38BDF8] md:justify-end"
           >
             <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
           </Button>
