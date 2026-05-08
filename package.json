@@ -8,6 +8,7 @@
     "build": "next build",
     "preexport": "node scripts/download-images.js",
     "export": "next build",
+    "postexport": "node scripts/post-export.js",
     "start": "next start",
     "lint": "eslint"
   },

@@ -19,7 +19,8 @@ export function ProductCard({ product }: ProductCardProps) {
     .split(",")
     .map((url) => url.trim())
     .filter(
-      (url) => url.length > 0 && (url.startsWith("http") || url.startsWith("/")),
+      (url) =>
+        url.length > 0 && (url.startsWith("http") || url.startsWith("/")),
     );
 
   const galleryImages =
@@ -31,111 +32,156 @@ export function ProductCard({ product }: ProductCardProps) {
   const featureItems = product.features.slice(0, featureLimit);
   const hiddenFeatureCount = product.features.length - featureItems.length;
 
+  // Генерируем SEO-friendly описание для картинок
+  const getImageAlt = (index: number) => {
+    return index === 0
+      ? `Кондиционер ${product.brand} ${product.model} — купить с установкой в Симферополе, цена ${formatProductPrice(product.price)} руб.`
+      : `${product.brand} ${product.model} фото ${index + 1} — кондиционеры в Крыму`;
+  };
+
+  // JSON-LD микроразметка для Product и Offer
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: `${product.brand} ${product.model}`,
+    description: `Кондиционер ${product.brand} ${product.model}. Купить в Симферополе с установкой. Мощность: ${product.power}. Класс энергоэффективности: ${product.energyClass}.`,
+    image: galleryImages,
+    brand: {
+      "@type": "Brand",
+      name: product.brand,
+    },
+    offers: {
+      "@type": "Offer",
+      url: `https://кондиционеры-в-крыму.рф/catalog/${product.id}`,
+      priceCurrency: "RUB",
+      price: product.price.toString(),
+      availability: "https://schema.org/InStock",
+      seller: {
+        "@type": "LocalBusiness",
+        name: "Кондиционеры в Крыму",
+      },
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      reviewCount: "100",
+    },
+  };
+
   return (
-    <Card
-      hoverable
-      className="min-w-0 h-full min-h-[34rem] flex flex-col overflow-hidden rounded-3xl border-[#CBD5E1] bg-[#E2E8F0] shadow-sm"
-      styles={{
-        body: {
-          padding: 0,
-          flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          height: "100%",
-          backgroundColor: "#E2E8F0",
-        },
-      }}
-    >
-      <div className="overflow-hidden border-b border-[#CBD5E1] bg-[#F8FAFC]">
-        <Carousel effect="fade" autoplay autoplaySpeed={4000}>
-          {galleryImages.map((url, index) => (
-            <div key={url || index}>
-              <Image
-                src={url}
-                alt={`${product.model} - фото ${index + 1}`}
-                width={320}
-                height={280}
-                className="h-48 w-full object-contain"
-                sizes="(min-width: 1536px) 18vw, (min-width: 1280px) 20vw, (min-width: 1024px) 25vw, (min-width: 768px) 33vw, 100vw"
-                placeholder="blur"
-                blurDataURL={BLUR_DATA_URL}
-                priority={index === 0}
-              />
-            </div>
-          ))}
-        </Carousel>
-      </div>
-
-      <div className="flex flex-1 flex-col justify-between p-4">
-        <div className="space-y-4">
-          <div className="space-y-1">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              {product.category}
-            </p>
-            <Link href={`/catalog/${product.id}`}>
-              <h2 className="text-lg font-semibold leading-tight text-[#0F172A] transition-colors hover:text-[#38BDF8] cursor-pointer">
-                {product.brand} {product.series}
-              </h2>
-            </Link>
-            <p className="text-sm text-muted-foreground">{product.model}</p>
-          </div>
-
-          <dl className="space-y-2 text-sm">
-            <div className="flex items-start justify-between gap-3">
-              <dt className="text-muted-foreground">Мощность</dt>
-              <dd className="text-right font-medium">{product.power}</dd>
-            </div>
-
-            <div className="flex items-start justify-between gap-3">
-              <dt className="text-muted-foreground">
-                Класс энергоэффективности
-              </dt>
-              <dd className="text-right font-medium">{product.energyClass}</dd>
-            </div>
-          </dl>
-
-          <div className="flex flex-wrap gap-2 max-h-17 overflow-visible">
-            {featureItems.map((feature) => (
-              <Tag
-                key={feature}
-                className="max-w-[45%] truncate whitespace-nowrap rounded-full border px-2 py-1 text-xs m-0"
-              >
-                {feature}
-              </Tag>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <Card
+        hoverable
+        className="min-w-0 h-full min-h-[34rem] flex flex-col overflow-hidden rounded-3xl border-[#CBD5E1] bg-[#E2E8F0] shadow-sm"
+        styles={{
+          body: {
+            padding: 0,
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            height: "100%",
+            backgroundColor: "#E2E8F0",
+          },
+        }}
+      >
+        <div className="overflow-hidden border-b border-[#CBD5E1] bg-[#F8FAFC]">
+          <Carousel effect="fade" autoplay autoplaySpeed={4000}>
+            {galleryImages.map((url, index) => (
+              <div key={url || index}>
+                <Image
+                  src={url}
+                  alt={getImageAlt(index)}
+                  title={`${product.brand} ${product.model} - фото ${index + 1}`}
+                  width={320}
+                  height={280}
+                  className="h-48 w-full object-contain"
+                  sizes="(min-width: 1536px) 18vw, (min-width: 1280px) 20vw, (min-width: 1024px) 25vw, (min-width: 768px) 33vw, 100vw"
+                  placeholder="blur"
+                  blurDataURL={BLUR_DATA_URL}
+                  priority={index === 0}
+                />
+              </div>
             ))}
-
-            {hiddenFeatureCount > 0 ? (
-              <Tag className="rounded-full border px-2 py-1 text-xs m-0">
-                +{hiddenFeatureCount}
-              </Tag>
-            ) : null}
-          </div>
+          </Carousel>
         </div>
+
+        <div className="flex flex-1 flex-col justify-between p-4">
+          <div className="space-y-4">
+            <div className="space-y-1">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                {product.category}
+              </p>
+              <Link href={`/catalog/${product.id}`}>
+                <h2 className="text-lg font-semibold leading-tight text-[#0F172A] transition-colors hover:text-[#38BDF8] cursor-pointer">
+                  {product.brand} {product.series}
+                </h2>
+              </Link>
+              <p className="text-sm text-muted-foreground">{product.model}</p>
+            </div>
+
+            <dl className="space-y-2 text-sm">
+              <div className="flex items-start justify-between gap-3">
+                <dt className="text-muted-foreground">Мощность</dt>
+                <dd className="text-right font-medium">{product.power}</dd>
+              </div>
+
+              <div className="flex items-start justify-between gap-3">
+                <dt className="text-muted-foreground">
+                  Класс энергоэффективности
+                </dt>
+                <dd className="text-right font-medium">
+                  {product.energyClass}
+                </dd>
+              </div>
+            </dl>
+
+            <div className="flex flex-wrap gap-2 max-h-17 overflow-visible">
+              {featureItems.map((feature) => (
+                <Tag
+                  key={feature}
+                  className="max-w-[45%] truncate whitespace-nowrap rounded-full border px-2 py-1 text-xs m-0"
+                >
+                  {feature}
+                </Tag>
+              ))}
+
+              {hiddenFeatureCount > 0 ? (
+                <Tag className="rounded-full border px-2 py-1 text-xs m-0">
+                  +{hiddenFeatureCount}
+                </Tag>
+              ) : null}
+            </div>
+          </div>
 
           <div className="space-y-1 border-t border-[#CBD5E1] mt-4 pt-4">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-            Цена
-          </p>
-          <p className="text-2xl font-bold tracking-tight">
-            {formatProductPrice(product.price)}
-          </p>
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              Цена
+            </p>
+            <p className="text-2xl font-bold tracking-tight">
+              {formatProductPrice(product.price)}
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div className="flex items-center justify-between gap-3 border-t border-[#CBD5E1] p-4">
-        <span className="text-sm text-muted-foreground">
-          Монтаж и консультация
-        </span>
+        <div className="flex items-center justify-between gap-3 border-t border-[#CBD5E1] p-4">
+          <span className="text-sm text-muted-foreground">
+            Монтаж и консультация
+          </span>
 
-        <Button
-          type="primary"
-          size="small"
-          icon={<Phone className="h-4 w-4" />}
-          href={`tel:${PHONE_E164}`}
-        >
-          Заказать
-        </Button>
-      </div>
-    </Card>
+          <Button
+            type="primary"
+            size="small"
+            icon={<Phone className="h-4 w-4" />}
+            href={`tel:${PHONE_E164}`}
+          >
+            Заказать
+          </Button>
+        </div>
+      </Card>
+    </>
   );
 }

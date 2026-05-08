@@ -4,7 +4,19 @@ import {
   DEFAULT_CATALOG_FILTERS,
 } from "@/features/catalog-filters";
 import { CatalogShowcase } from "@/widgets/catalog-showcase";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Каталог кондиционеров в Симферополе | Купить кондиционер в Крыму",
+  description:
+    "Каталог кондиционеров в Симферополе. Купить кондиционер в Крыму по лучшим ценам. Установка и монтаж кондиционеров в 82 регионе.",
+  keywords: [
+    "кондиционеры симферополь",
+    "купить кондиционер",
+    "купить в крыму",
+    "установка кондиционера",
+    "установка в симферополе",
+  ],
+};
 export default async function CatalogPage() {
   const products = await getProducts();
   const filterOptions = getCatalogFilterOptions(products);
