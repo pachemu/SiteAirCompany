@@ -39,42 +39,8 @@ export function ProductCard({ product }: ProductCardProps) {
       : `${product.brand} ${product.model} фото ${index + 1} — кондиционеры в Крыму`;
   };
 
-  // JSON-LD микроразметка для Product и Offer
-  const productJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: `${product.brand} ${product.model}`,
-    description: `Кондиционер ${product.brand} ${product.model}. Купить в Симферополе с установкой. Мощность: ${product.power}. Класс энергоэффективности: ${product.energyClass}.`,
-    image: galleryImages,
-    brand: {
-      "@type": "Brand",
-      name: product.brand,
-    },
-    offers: {
-      "@type": "Offer",
-      url: `https://кондиционеры-в-крыму.рф/catalog/${product.id}`,
-      priceCurrency: "RUB",
-      price: product.price.toString(),
-      availability: "https://schema.org/InStock",
-      seller: {
-        "@type": "LocalBusiness",
-        name: "Кондиционеры в Крыму",
-      },
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      reviewCount: "100",
-    },
-  };
-
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
-      />
-      <Card
+    <Card
         hoverable
         className="min-w-0 h-full min-h-[34rem] flex flex-col overflow-hidden rounded-3xl border-[#CBD5E1] bg-[#E2E8F0] shadow-sm"
         styles={{
@@ -181,7 +147,6 @@ export function ProductCard({ product }: ProductCardProps) {
             Заказать
           </Button>
         </div>
-      </Card>
-    </>
+    </Card>
   );
 }

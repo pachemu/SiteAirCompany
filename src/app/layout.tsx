@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     description:
       "Купить кондиционер в Симферополе по выгодным ценам. Широкий выбор кондиционеров в Крыму. Установка кондиционеров в Симферополе и Крыму.",
     url: "https://кондиционеры-в-крыму.рф",
-    siteName: "Ваш бизнес",
+    siteName: "Кониционеры симферополь",
     images: [
       {
         url: "/images/products/conditioner_air.png",
@@ -88,7 +88,7 @@ export default function RootLayout({
     description:
       "Продажа и профессиональная установка кондиционеров в Симферополе и Крыму",
     url: "https://кондиционеры-в-крыму.рф",
-    telephone: "+7-978-123-45-67",
+    telephone: "+7-978-839-02-72",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Симферополь",

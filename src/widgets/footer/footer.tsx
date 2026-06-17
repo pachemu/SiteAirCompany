@@ -2,6 +2,8 @@ import Link from "next/link";
 import { EMAIL, PHONE_E164, PHONE_HUMAN } from "@/shared/config/contacts";
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="mt-12 border-t border-[#CBD5E1] bg-[#E2E8F0] px-4 py-10 text-[#0F172A] md:py-16">
       <div className="mx-auto max-w-7xl">
@@ -17,12 +19,7 @@ export function Footer() {
             <p className="text-[#475569] text-sm max-w-xs">
               Кондиционеры в Симферополе и Крыму — ваш надежный партнер. Купить
               кондиционер в Симферополе по выгодным ценам, с профессиональной
-              установкой в 82 регионе. Адрес: ул. Примерная, 10, Симферополь,
-              Крым. Телефон: +7 (123) 456-78-90.
-            </p>
-            <p className="text-[#64748B] text-sm">
-              © 2024 Ваш бизнес. Все права защищены. Установка кондиционеров в
-              Крыму — наша специализация.
+              установкой в 82 регионе. Крым. Телефон: {PHONE_HUMAN}.
             </p>
           </div>
 
@@ -66,9 +63,7 @@ export function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-[#64748B] text-xs">
           <span>© {new Date().getFullYear()} Кондиционеры в Крыму</span>
-          <Link href="/privacy" className="hover:text-[#0F172A]">
-            Политика конфиденциальности
-          </Link>
+          <span className="text-[#64748B]">Политика конфиденциальности</span>
         </div>
       </div>
     </footer>

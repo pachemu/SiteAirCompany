@@ -85,15 +85,16 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  font-family: var(--app-font-sans);
 }
 
-/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+/* Удаляем стандартную стилизацию для всех ul и ol, у которых есть атрибут class */
 ul[class],
 ol[class] {
   list-style: none;
 }
 
-/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+/* Элементы a — сохраняем подчёркивание для доступности */
 a {
   text-decoration-skip-ink: auto;
 }
@@ -103,13 +104,14 @@ button:active,
 button:focus {
   border: none;
 }
+
 /* Упрощаем работу с изображениями */
 img {
   max-width: 100%;
   display: block;
 }
 
-/* Указываем понятную периодичность в потоке данных у article*/
+/* Указываем понятную периодичность в потоке данных у article */
 article > * + * {
   margin-top: 1em;
 }
@@ -122,7 +124,7 @@ select {
   font: inherit;
 }
 
-/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
+/* Удаляем все анимации и переходы для людей, которые предпочитают их не использовать */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -131,34 +133,10 @@ select {
     scroll-behavior: auto !important;
   }
 }
-* {
-  box-sizing: border-box;
-}
 
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
-}
-
-body {
-  font-family: var(--app-font-sans);
-}
-
-/* Удаление стилей для всех элементов */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ul,
-ol,
-li,
-div,
-span,
-a {
-  text-decoration: none;
 }
 
 :root {

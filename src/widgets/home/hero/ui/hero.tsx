@@ -4,20 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button, Typography } from "antd";
 
-const { Title, Paragraph } = Typography;
+import { PHONE_E164 } from "@/shared/config/contacts";
 
-const HERO_IMAGE_SVG = encodeURIComponent(`
-<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="800" rx="48" fill="#F1F5F9"/>
-  <rect x="170" y="230" width="860" height="300" rx="48" fill="#0B2A55"/>
-  <rect x="230" y="280" width="740" height="70" rx="28" fill="#FFFFFF" opacity="0.92"/>
-  <rect x="230" y="380" width="520" height="34" rx="17" fill="#FFFFFF" opacity="0.6"/>
-  <circle cx="922" cy="397" r="16" fill="#60A5FA"/>
-  <rect x="230" y="450" width="420" height="26" rx="13" fill="#FFFFFF" opacity="0.45"/>
-  <path d="M260 320 C310 290, 350 290, 400 320" stroke="#0B2A55" stroke-width="10" stroke-linecap="round"/>
-  <path d="M260 320 C310 350, 350 350, 400 320" stroke="#0B2A55" stroke-width="10" stroke-linecap="round" opacity="0.7"/>
-</svg>
-`);
+const { Title, Paragraph } = Typography;
 
 export function Hero() {
   return (
@@ -52,7 +41,7 @@ export function Hero() {
               size="large"
               className="h-11 rounded-2xl border-[#38BDF8] text-[#0F172A] hover:!border-[#38BDF8] hover:!text-[#0284C7]"
             >
-              <a href="tel:+79788390272">Консультация</a>
+              <a href={`tel:${PHONE_E164}`}>Консультация</a>
             </Button>
           </div>
 

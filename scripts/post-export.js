@@ -28,9 +28,10 @@ pathMappings.forEach(({ source, dest }) => {
     console.log(`📁 Создана папка: ${destDir}`);
   }
 
-  // Копируем файл
+  // Копируем файл и удаляем оригинал
   try {
     fs.copyFileSync(sourcePath, destPath);
+    fs.unlinkSync(sourcePath);
     console.log(`✓ ${source} → ${dest}`);
   } catch (error) {
     console.error(`✗ Ошибка при копировании ${source}:`, error.message);
