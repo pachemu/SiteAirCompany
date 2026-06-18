@@ -140,32 +140,32 @@ html {
 }
 
 :root {
-  --app-font-sans: Arial, Helvetica, sans-serif;
+  --app-font-sans: "Inter", Arial, Helvetica, sans-serif;
   --app-font-mono: "Courier New", Courier, monospace;
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --card: #e2e8f0;
-  --card-foreground: #0f172a;
-  --popover: #f8fafc;
-  --popover-foreground: #0f172a;
-  --primary: #38bdf8;
-  --primary-foreground: #0f172a;
-  --secondary: #e2e8f0;
-  --secondary-foreground: #0f172a;
-  --muted: #e2e8f0;
-  --muted-foreground: #475569;
-  --accent: #38bdf8;
-  --accent-foreground: #0f172a;
+  --background: #ffffff;
+  --foreground: #0c1527;
+  --card: #f1f5f9;
+  --card-foreground: #0c1527;
+  --popover: #ffffff;
+  --popover-foreground: #0c1527;
+  --primary: #0891b2;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #334155;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #ea580c;
+  --accent-foreground: #ffffff;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #cbd5e1;
-  --input: #cbd5e1;
-  --ring: #38bdf8;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #0891b2;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
+  --radius: 0.75rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -224,32 +224,33 @@ html {
 
 @layer components {
   .ant-btn-primary {
-    background: #38bdf8;
-    border-color: #38bdf8;
-    color: #0f172a;
-    box-shadow: 0 1px 2px rgb(15 23 42 / 0.08);
+    background: #ea580c;
+    border-color: #ea580c;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgb(234 88 12 / 0.3);
+    font-weight: 600;
   }
 
   .ant-btn-primary:not(:disabled):not(.ant-btn-disabled):hover,
   .ant-btn-primary:not(:disabled):not(.ant-btn-disabled):focus-visible {
-    background: #0ea5e9;
-    border-color: #0ea5e9;
-    color: #0f172a;
+    background: #c2410c;
+    border-color: #c2410c;
+    color: #ffffff;
   }
 
   .ant-select-focused .ant-select-selector,
   .ant-select-selector:focus,
   .ant-select-selector:focus-within {
-    border-color: #38bdf8 !important;
-    box-shadow: 0 0 0 2px rgb(56 189 248 / 0.16) !important;
+    border-color: #0891b2 !important;
+    box-shadow: 0 0 0 2px rgb(8 145 178 / 0.16) !important;
   }
 
   .ant-pagination .ant-pagination-item-active {
-    border-color: #38bdf8;
+    border-color: #0891b2;
   }
 
   .ant-pagination .ant-pagination-item-active a,
   .ant-pagination .ant-pagination-item-active:hover a {
-    color: #0284c7;
+    color: #0891b2;
   }
 }

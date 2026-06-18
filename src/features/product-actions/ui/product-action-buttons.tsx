@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "antd";
-import { MessageCircle, Phone } from "lucide-react";
+import { ShoppingCart, Phone } from "lucide-react";
 
 import { PHONE_E164, TELEGRAM_LINK } from "@/shared/config/contacts";
 
@@ -11,18 +11,18 @@ export function ProductActionButtons() {
       <Button
         type="primary"
         size="large"
-        icon={<MessageCircle className="h-4 w-4" />}
-        className="flex-1 bg-[#38BDF8] text-[#0F172A] hover:!bg-[#0EA5E9] hover:!text-[#0F172A]"
+        icon={<ShoppingCart className="h-4 w-4" />}
+        className="!flex-1 !rounded-xl !bg-[#ea580c] !border-[#ea580c] !text-white !font-semibold hover:!bg-[#c2410c]"
         href={TELEGRAM_LINK}
         target="_blank"
         rel="noopener noreferrer"
       >
-        Написать
+        Купить с установкой
       </Button>
       <Button
         size="large"
         icon={<Phone className="h-4 w-4" />}
-        className="flex-1 border-[#CBD5E1] text-[#0F172A] hover:!border-[#38BDF8] hover:!text-[#0284C7]"
+        className="!flex-1 !rounded-xl !border-[#e2e8f0] !text-[#334155] hover:!border-[#0891b2] hover:!text-[#0891b2]"
         href={`tel:${PHONE_E164}`}
       >
         Позвонить

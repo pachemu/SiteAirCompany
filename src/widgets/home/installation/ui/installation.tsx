@@ -1,86 +1,74 @@
-import React from "react";
-
 export function Installation() {
   return (
-    <section className="relative py-16 px-4 md:py-24 overflow-hidden">
-      {/* Background gradient effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#38BDF8]/5 via-transparent to-[#0EA5E9]/5 pointer-events-none" />
-      
+    <section className="relative overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white px-6 py-10 shadow-sm md:px-10 md:py-14">
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0891b2]/5 via-transparent to-[#0891b2]/5 pointer-events-none" />
+
       <div className="relative max-w-4xl mx-auto">
-        {/* Decorative top accent */}
-        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-[#38BDF8] to-transparent rounded-full" />
-        
         <div className="space-y-8">
-          {/* Main heading */}
-          <div className="space-y-4 text-center">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
-              <span className="bg-gradient-to-r from-[#38BDF8] via-[#0EA5E9] to-[#38BDF8] bg-clip-text text-transparent">
-                Установка кондиционеров
-              </span>
+          <div className="space-y-3 text-center">
+            <h2 className="m-0 text-3xl font-extrabold leading-tight tracking-tight text-[#0c1527] md:text-4xl">
+              Установка кондиционеров
               <br />
-              <span className="text-[#0F172A]">в Симферополе</span>
+              <span className="text-[#0891b2]">в Симферополе</span>
             </h2>
-            <p className="text-[#64748B] text-lg md:text-xl font-medium">
-              Профессиональный монтаж • Гарантия качества • Поддержка 24/7
+            <p className="m-0 text-sm font-medium text-[#64748b] md:text-base">
+              Профессиональный монтаж · Гарантия качества · Поддержка 24/7
             </p>
           </div>
 
-          {/* Content paragraphs */}
-          <div className="space-y-6">
-            {/* Block 1 */}
-            <div className="bg-white/50 backdrop-blur-sm border border-[#CBD5E1] rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow">
+          <div className="space-y-4">
+            <div className="rounded-2xl border border-[#e2e8f0] bg-[#f8fafc] p-5 md:p-6">
               <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#38BDF8]/10">
-                    <span className="text-2xl">✓</span>
+                <div className="shrink-0">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0891b2]/10">
+                    <span className="text-lg text-[#0891b2]">✓</span>
                   </div>
                 </div>
-                <div className="space-y-2">
-                  <h3 className="text-lg font-semibold text-[#0F172A]">
+                <div className="space-y-1">
+                  <h3 className="m-0 text-base font-bold text-[#0c1527]">
                     Гарантия комфорта в жаркие дни
                   </h3>
-                  <p className="text-[#475569] leading-relaxed">
-                    Профессиональная установка кондиционера в Симферополе и по всему Крыму — это гарантия комфорта в жаркие дни. Мы предлагаем качественный монтаж с соблюдением всех норм, чтобы ваш кондиционер работал эффективно и безопасно. В 82 регионе Крыма климатические условия требуют надежных решений, и наша команда мастеров обеспечит быстрый и аккуратный монтаж.
+                  <p className="m-0 text-sm leading-relaxed text-[#64748b]">
+                    Профессиональная установка кондиционера в Симферополе и по всему
+                    Крыму — это гарантия комфорта в жаркие дни. Мы предлагаем
+                    качественный монтаж с соблюдением всех норм, чтобы ваш
+                    кондиционер работал эффективно и безопасно.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Block 2 */}
-            <div className="bg-white/50 backdrop-blur-sm border border-[#CBD5E1] rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow">
+            <div className="rounded-2xl border border-[#e2e8f0] bg-[#f8fafc] p-5 md:p-6">
               <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#38BDF8]/10">
-                    <span className="text-2xl">⚙</span>
+                <div className="shrink-0">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0891b2]/10">
+                    <span className="text-lg text-[#0891b2]">⚙</span>
                   </div>
                 </div>
-                <div className="space-y-2">
-                  <h3 className="text-lg font-semibold text-[#0F172A]">
+                <div className="space-y-1">
+                  <h3 className="m-0 text-base font-bold text-[#0c1527]">
                     Полный комплекс работ под ключ
                   </h3>
-                  <p className="text-[#475569] leading-relaxed">
-                    Установка кондиционера в Симферополе включает полный комплекс работ: от подбора места до тестирования системы. Мы используем современное оборудование и материалы, чтобы избежать проблем в будущем. Если вы ищете, где купить и установить кондиционер в Крыму, обратитесь к нам — мы поможем создать идеальный микроклимат в вашем доме или офисе.
+                  <p className="m-0 text-sm leading-relaxed text-[#64748b]">
+                    Установка кондиционера в Симферополе включает полный комплекс
+                    работ: от подбора места до тестирования системы. Мы используем
+                    современное оборудование и материалы.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* CTA Block */}
-            <div className="bg-gradient-to-br from-[#38BDF8]/10 to-[#0EA5E9]/10 border border-[#38BDF8]/30 rounded-2xl p-6 md:p-8 text-center">
-              <p className="text-lg md:text-xl text-[#0F172A] font-semibold mb-3">
+            <div className="rounded-2xl border border-[#0891b2]/20 bg-[#0891b2]/5 p-5 text-center md:p-6">
+              <p className="m-0 mb-2 text-base font-bold text-[#0c1527] md:text-lg">
                 Готовы к идеальному микроклимату?
               </p>
-              <p className="text-[#475569] leading-relaxed">
-                Свяжитесь с нами для консультации по установке в Симферополе. Ваша комфортная жизнь в Крыму начинается здесь!
+              <p className="m-0 text-sm text-[#64748b]">
+                Свяжитесь с нами для консультации по установке в Симферополе.
               </p>
             </div>
           </div>
         </div>
-
-        {/* Decorative bottom accent */}
-        <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-[#38BDF8] to-transparent rounded-full" />
       </div>
     </section>
   );
 }
-

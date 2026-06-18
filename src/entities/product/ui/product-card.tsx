@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button, Card, Carousel, Tag } from "antd";
-import { Phone } from "lucide-react";
+import { Button, Carousel, Tag } from "antd";
+import { ShoppingCartOutlined } from "@ant-design/icons";
 
 import { formatProductPrice } from "@/entities/product/lib/format-product-price";
 import type { Product } from "@/entities/product/model/types";
@@ -32,7 +32,6 @@ export function ProductCard({ product }: ProductCardProps) {
   const featureItems = product.features.slice(0, featureLimit);
   const hiddenFeatureCount = product.features.length - featureItems.length;
 
-  // Генерируем SEO-friendly описание для картинок
   const getImageAlt = (index: number) => {
     return index === 0
       ? `Кондиционер ${product.brand} ${product.model} — купить с установкой в Симферополе, цена ${formatProductPrice(product.price)} руб.`
@@ -40,113 +39,105 @@ export function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <Card
-        hoverable
-        className="min-w-0 h-full min-h-[34rem] flex flex-col overflow-hidden rounded-3xl border-[#CBD5E1] bg-[#E2E8F0] shadow-sm"
-        styles={{
-          body: {
-            padding: 0,
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            height: "100%",
-            backgroundColor: "#E2E8F0",
-          },
-        }}
-      >
-        <div className="overflow-hidden border-b border-[#CBD5E1] bg-[#F8FAFC]">
-          <Carousel effect="fade" autoplay autoplaySpeed={4000}>
-            {galleryImages.map((url, index) => (
-              <div key={url || index}>
+    <div className="group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white shadow-sm transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5">
+      <div className="relative overflow-hidden border-b border-[#e2e8f0] bg-[#f8fafc]">
+        <div className="absolute left-3 top-3 z-10 rounded-full bg-[#0891b2] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-md">
+          В наличии
+        </div>
+
+        <Carousel effect="fade" autoplay autoplaySpeed={4000} dots={false} arrows={false}>
+          {galleryImages.map((url, index) => (
+            <div key={url || index}>
+              <Link href={`/catalog/${product.id}`}>
                 <Image
                   src={url}
                   alt={getImageAlt(index)}
                   title={`${product.brand} ${product.model} - фото ${index + 1}`}
-                  width={320}
-                  height={280}
-                  className="h-48 w-full object-contain"
+                  width={400}
+                  height={340}
+                  className="h-56 w-full object-contain p-4 transition-transform duration-300 group-hover:scale-105"
                   sizes="(min-width: 1536px) 18vw, (min-width: 1280px) 20vw, (min-width: 1024px) 25vw, (min-width: 768px) 33vw, 100vw"
                   placeholder="blur"
                   blurDataURL={BLUR_DATA_URL}
                   priority={index === 0}
                 />
-              </div>
-            ))}
-          </Carousel>
-        </div>
-
-        <div className="flex flex-1 flex-col justify-between p-4">
-          <div className="space-y-4">
-            <div className="space-y-1">
-              <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                {product.category}
-              </p>
-              <Link href={`/catalog/${product.id}`}>
-                <h2 className="text-lg font-semibold leading-tight text-[#0F172A] transition-colors hover:text-[#38BDF8] cursor-pointer">
-                  {product.brand} {product.series}
-                </h2>
               </Link>
-              <p className="text-sm text-muted-foreground">{product.model}</p>
             </div>
+          ))}
+        </Carousel>
+      </div>
 
-            <dl className="space-y-2 text-sm">
-              <div className="flex items-start justify-between gap-3">
-                <dt className="text-muted-foreground">Мощность</dt>
-                <dd className="text-right font-medium">{product.power}</dd>
+      <div className="flex flex-1 flex-col justify-between p-4">
+        <div className="space-y-3">
+          <div className="space-y-1">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0891b2]">
+              {product.category}
+            </p>
+            <Link href={`/catalog/${product.id}`}>
+              <h2 className="m-0 text-base font-bold leading-tight text-[#0c1527] transition-colors group-hover:text-[#0891b2]">
+                {product.brand} {product.series}
+              </h2>
+            </Link>
+            <p className="text-xs text-[#64748b]">{product.model}</p>
+          </div>
+
+          <dl className="space-y-1.5 text-sm">
+            <div className="flex items-center justify-between gap-3">
+              <dt className="text-[#64748b]">Мощность</dt>
+              <dd className="m-0 text-right font-medium text-[#334155]">{product.power}</dd>
+            </div>
+            <div className="flex items-center justify-between gap-3">
+              <dt className="text-[#64748b]">Энергоэффективность</dt>
+              <dd className="m-0 text-right font-medium text-[#334155]">{product.energyClass}</dd>
+            </div>
+            {product.area && (
+              <div className="flex items-center justify-between gap-3">
+                <dt className="text-[#64748b]">Площадь</dt>
+                <dd className="m-0 text-right font-medium text-[#334155]">{product.area}</dd>
               </div>
+            )}
+          </dl>
 
-              <div className="flex items-start justify-between gap-3">
-                <dt className="text-muted-foreground">
-                  Класс энергоэффективности
-                </dt>
-                <dd className="text-right font-medium">
-                  {product.energyClass}
-                </dd>
-              </div>
-            </dl>
-
-            <div className="flex flex-wrap gap-2 max-h-17 overflow-visible">
+          {featureItems.length > 0 && (
+            <div className="flex flex-wrap gap-1.5">
               {featureItems.map((feature) => (
                 <Tag
                   key={feature}
-                  className="max-w-[45%] truncate whitespace-nowrap rounded-full border px-2 py-1 text-xs m-0"
+                  className="!m-0 !rounded-full !border-[#e2e8f0] !bg-[#f1f5f9] !px-2 !py-0.5 !text-[11px] !text-[#334155]"
                 >
                   {feature}
                 </Tag>
               ))}
-
-              {hiddenFeatureCount > 0 ? (
-                <Tag className="rounded-full border px-2 py-1 text-xs m-0">
+              {hiddenFeatureCount > 0 && (
+                <Tag className="!m-0 !rounded-full !border-[#e2e8f0] !bg-[#f1f5f9] !px-2 !py-0.5 !text-[11px] !text-[#64748b]">
                   +{hiddenFeatureCount}
                 </Tag>
-              ) : null}
+              )}
             </div>
-          </div>
+          )}
+        </div>
 
-          <div className="space-y-1 border-t border-[#CBD5E1] mt-4 pt-4">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Цена
-            </p>
-            <p className="text-2xl font-bold tracking-tight">
+        <div className="mt-4 space-y-3 border-t border-[#e2e8f0] pt-3">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#64748b]">Цена с установкой</p>
+            <p className="m-0 text-xl font-extrabold tracking-tight text-[#0c1527]">
               {formatProductPrice(product.price)}
             </p>
           </div>
-        </div>
 
-        <div className="flex items-center justify-between gap-3 border-t border-[#CBD5E1] p-4">
-          <span className="text-sm text-muted-foreground">
-            Монтаж и консультация
-          </span>
-
-          <Button
-            type="primary"
-            size="small"
-            icon={<Phone className="h-4 w-4" />}
-            href={`tel:${PHONE_E164}`}
-          >
-            Заказать
-          </Button>
+          <div className="flex gap-2">
+            <Button
+              type="primary"
+              size="middle"
+              icon={<ShoppingCartOutlined />}
+              className="!flex-1 !rounded-xl !bg-[#ea580c] !border-[#ea580c] !text-white !font-semibold hover:!bg-[#c2410c]"
+              href={PHONE_E164 ? `tel:${PHONE_E164}` : undefined}
+            >
+              Купить с установкой
+            </Button>
+          </div>
         </div>
-    </Card>
+      </div>
+    </div>
   );
 }

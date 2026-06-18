@@ -12,12 +12,12 @@ export function ProductDescription({ product }: ProductDescriptionProps) {
   }
 
   return (
-    <section className="w-full rounded-2xl border border-[#CBD5E1] bg-[#E2E8F0] p-6 shadow-sm">
-      <div className="mb-4 border-b border-[#CBD5E1] pb-3">
-        <h3 className="text-xl font-semibold tracking-tight">Описание</h3>
+    <section className="w-full overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white p-6 shadow-sm">
+      <div className="mb-4 border-b border-[#e2e8f0] pb-3">
+        <h3 className="m-0 text-base font-bold tracking-tight text-[#0c1527]">Описание</h3>
       </div>
 
-      <div className="w-full whitespace-pre-line text-[15px] leading-7 text-foreground/90">
+      <div className="w-full whitespace-pre-line text-sm leading-7 text-[#334155]">
         {description}
       </div>
     </section>
