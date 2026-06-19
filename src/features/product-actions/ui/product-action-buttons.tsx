@@ -12,7 +12,7 @@ export function ProductActionButtons() {
         type="primary"
         size="large"
         icon={<ShoppingCart className="h-4 w-4" />}
-        className="!flex-1 !rounded-xl !bg-[#ea580c] !border-[#ea580c] !text-white !font-semibold hover:!bg-[#c2410c]"
+        className="!flex-1 !rounded-xl !bg-[#2563eb] !border-[#2563eb] !text-white !font-semibold hover:!bg-[#1d4ed8]"
         href={TELEGRAM_LINK}
         target="_blank"
         rel="noopener noreferrer"

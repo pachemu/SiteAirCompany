@@ -154,7 +154,7 @@ html {
   --secondary-foreground: #334155;
   --muted: #f1f5f9;
   --muted-foreground: #64748b;
-  --accent: #ea580c;
+  --accent: #2563eb;
   --accent-foreground: #ffffff;
   --destructive: oklch(0.577 0.245 27.325);
   --border: #e2e8f0;
@@ -224,17 +224,17 @@ html {
 
 @layer components {
   .ant-btn-primary {
-    background: #ea580c;
-    border-color: #ea580c;
+    background: #2563eb;
+    border-color: #2563eb;
     color: #ffffff;
-    box-shadow: 0 2px 8px rgb(234 88 12 / 0.3);
+    box-shadow: 0 2px 8px rgb(37 99 235 / 0.3);
     font-weight: 600;
   }
 
   .ant-btn-primary:not(:disabled):not(.ant-btn-disabled):hover,
   .ant-btn-primary:not(:disabled):not(.ant-btn-disabled):focus-visible {
-    background: #c2410c;
-    border-color: #c2410c;
+    background: #1d4ed8;
+    border-color: #1d4ed8;
     color: #ffffff;
   }
 

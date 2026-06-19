@@ -130,7 +130,7 @@ export function ProductCard({ product }: ProductCardProps) {
               type="primary"
               size="middle"
               icon={<ShoppingCartOutlined />}
-              className="!flex-1 !rounded-xl !bg-[#ea580c] !border-[#ea580c] !text-white !font-semibold hover:!bg-[#c2410c]"
+              className="!flex-1 !rounded-xl !bg-[#2563eb] !border-[#2563eb] !text-white !font-semibold hover:!bg-[#1d4ed8]"
               href={PHONE_E164 ? `tel:${PHONE_E164}` : undefined}
             >
               Купить с установкой

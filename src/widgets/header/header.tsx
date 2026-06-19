@@ -36,7 +36,7 @@ export function Header() {
           </a>
           <Button
             type="primary"
-            className="!rounded-xl !bg-[#ea580c] !border-[#ea580c] !text-white !font-semibold hover:!bg-[#c2410c]"
+            className="!rounded-xl !bg-[#2563eb] !border-[#2563eb] !text-white !font-semibold hover:!bg-[#1d4ed8]"
           >
             <Link href="/catalog">Заявка</Link>
           </Button>
@@ -76,7 +76,7 @@ export function Header() {
             <Button
               type="primary"
               size="large"
-              className="!mt-1 !rounded-xl !bg-[#ea580c] !border-[#ea580c] !text-white !font-semibold hover:!bg-[#c2410c]"
+              className="!mt-1 !rounded-xl !bg-[#2563eb] !border-[#2563eb] !text-white !font-semibold hover:!bg-[#1d4ed8]"
               onClick={() => setMobileOpen(false)}
             >
               <Link href="/catalog">Оставить заявку</Link>

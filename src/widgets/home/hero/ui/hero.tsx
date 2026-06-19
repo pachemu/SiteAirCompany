@@ -16,7 +16,7 @@ export function Hero() {
     <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0c1527] via-[#0e3a5e] to-[#0891b2] text-white shadow-xl">
       <div className="absolute inset-0 bg-[url('/images/products/conditioner_air.png')] bg-cover bg-center opacity-[0.06]" />
       <div className="absolute top-0 right-0 h-[500px] w-[500px] rounded-full bg-[#0891b2]/20 blur-[120px]" />
-      <div className="absolute bottom-0 left-0 h-[300px] w-[300px] rounded-full bg-[#ea580c]/10 blur-[100px]" />
+      <div className="absolute bottom-0 left-0 h-[300px] w-[300px] rounded-full bg-[#2563eb]/10 blur-[100px]" />
 
       <div className="relative grid grid-cols-1 gap-8 p-6 md:grid-cols-2 md:p-10 lg:p-12">
         <div className="flex flex-col justify-center gap-5">
@@ -43,7 +43,7 @@ export function Hero() {
             <Button
               type="primary"
               size="large"
-              className="!h-12 !rounded-xl !bg-[#ea580c] !border-[#ea580c] !text-white !font-bold !text-base !shadow-[0_4px_20px_rgba(234,88,12,0.4)] hover:!bg-[#c2410c] hover:!border-[#c2410c]"
+              className="!h-12 !rounded-xl !bg-[#2563eb] !border-[#2563eb] !text-white !font-bold !text-base !shadow-[0_4px_20px_rgba(37,99,235,0.4)] hover:!bg-[#1d4ed8] hover:!border-[#1d4ed8]"
             >
               <Link href="/catalog">Купить с установкой</Link>
             </Button>

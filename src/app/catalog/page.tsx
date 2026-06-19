@@ -5,6 +5,9 @@ import {
 } from "@/features/catalog-filters";
 import { CatalogShowcase } from "@/widgets/catalog-showcase";
 import { Metadata } from "next";
+
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Каталог кондиционеров в Симферополе | Купить кондиционер в Крыму",
   description:

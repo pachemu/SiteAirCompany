@@ -1,3 +1,5 @@
+"use client";
+
 import type { Product } from "@/entities/product/model/types";
 import { formatProductPrice } from "@/entities/product/lib/format-product-price";
 import { ProductDescription } from "@/entities/product/ui/product-description";

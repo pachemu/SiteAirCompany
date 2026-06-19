@@ -4,12 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/download-images.js",
     "build": "next build",
-    "preexport": "node scripts/download-images.js",
-    "export": "next build",
-    "postexport": "node scripts/post-export.js",
-    "start": "npx serve@latest out",
+    "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
@@ -41,8 +37,8 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "drizzle-kit": "^0.31.10",
     "dotenv": "^17.4.1",
+    "drizzle-kit": "^0.31.10",
     "eslint": "^9.39.4",
     "eslint-config-next": "16.2.3",
     "eslint-plugin-react": "^7.37.5",
