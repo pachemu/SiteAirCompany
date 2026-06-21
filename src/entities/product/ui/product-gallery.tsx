@@ -8,14 +8,14 @@ import { BLUR_DATA_URL } from "@/shared/lib/image-placeholder";
 export function ProductGallery({ images = [] }: { images?: string[] }) {
   if (!images || images.length === 0) {
     return (
-      <div className="flex h-full min-h-[420px] items-center justify-center rounded-2xl border border-[#e2e8f0] bg-white shadow-sm lg:min-h-[620px] xl:min-h-[720px]">
+      <div className="flex h-full min-h-[420px] items-center justify-center rounded-2xl bg-white shadow-sm lg:min-h-[620px] xl:min-h-[720px]">
         <span className="text-[#64748b]">Нет изображений</span>
       </div>
     );
   }
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white shadow-sm">
+    <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
       <Carousel
         arrows
         dots

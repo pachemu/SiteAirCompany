@@ -29,7 +29,7 @@ export function Hero() {
             Установка кондиционеров
             <br />
             <span className="bg-gradient-to-r from-[#22d3ee] via-[#0891b2] to-[#67e8f9] bg-clip-text text-transparent">
-              в Крыму под ключ
+              в Крыму
             </span>
           </h1>
 

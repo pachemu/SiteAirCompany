@@ -11,7 +11,7 @@ import {
 
 export function ContactCTA() {
   return (
-    <section className="overflow-hidden rounded-2xl border border-[#e2e8f0] bg-gradient-to-br from-[#0c1527] via-[#0e3a5e] to-[#0891b2] text-white shadow-lg">
+    <section className="overflow-hidden rounded-2xl bg-gradient-to-br from-[#0c1527] via-[#0e3a5e] to-[#0891b2] text-white shadow-lg">
       <div className="grid grid-cols-1 gap-6 p-6 md:grid-cols-2 md:p-10">
         <div className="space-y-3">
           <h2 className="m-0 text-2xl font-extrabold text-white md:text-3xl">
@@ -19,7 +19,7 @@ export function ContactCTA() {
           </h2>
           <p className="m-0 text-sm text-white/70">
             Напишите в WhatsApp, MAX, Telegram — ответим быстро, подберём
-            кондиционер и озвучим стоимость под ключ.
+            кондиционер и озвучим стоимость с установкой.
           </p>
           <div className="text-sm text-white/60">
             Телефон:{" "}

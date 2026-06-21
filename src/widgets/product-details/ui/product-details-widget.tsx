@@ -52,7 +52,7 @@ export function ProductDetailsWidget({ product }: ProductDetailsWidgetProps) {
 
             <ProductMainHeader product={product} />
 
-            <div className="rounded-2xl border border-[#e2e8f0] bg-white p-6 shadow-sm">
+            <div className="rounded-2xl bg-white p-6 shadow-sm">
               <div className="mb-1 text-xs font-bold uppercase tracking-wider text-[#64748b]">
                 Цена с установкой
               </div>
@@ -70,7 +70,7 @@ export function ProductDetailsWidget({ product }: ProductDetailsWidgetProps) {
 
             <ProductDescription product={product} />
 
-            <div className="rounded-2xl border border-[#e2e8f0] bg-white p-6 shadow-sm">
+            <div className="rounded-2xl bg-white p-6 shadow-sm">
               <h3 className="m-0 mb-4 text-base font-bold text-[#0c1527]">
                 Как проходит установка
               </h3>
@@ -115,28 +115,28 @@ export function ProductDetailsWidget({ product }: ProductDetailsWidgetProps) {
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              <div className="flex items-center gap-2.5 rounded-xl border border-[#e2e8f0] bg-white p-3 shadow-sm">
+              <div className="flex items-center gap-2.5 rounded-xl bg-white p-3 shadow-sm">
                 <ToolOutlined className="text-[#0891b2]" />
                 <div>
                   <div className="text-xs font-semibold text-[#0c1527]">Монтаж за 1 день</div>
                   <div className="text-[10px] text-[#64748b]">2-3 часа</div>
                 </div>
               </div>
-              <div className="flex items-center gap-2.5 rounded-xl border border-[#e2e8f0] bg-white p-3 shadow-sm">
+              <div className="flex items-center gap-2.5 rounded-xl bg-white p-3 shadow-sm">
                 <SafetyCertificateOutlined className="text-[#0891b2]" />
                 <div>
                   <div className="text-xs font-semibold text-[#0c1527]">Чистая работа</div>
                   <div className="text-[10px] text-[#64748b]">С пылесосом</div>
                 </div>
               </div>
-              <div className="flex items-center gap-2.5 rounded-xl border border-[#e2e8f0] bg-white p-3 shadow-sm">
+              <div className="flex items-center gap-2.5 rounded-xl bg-white p-3 shadow-sm">
                 <CheckCircleOutlined className="text-[#22c55e]" />
                 <div>
                   <div className="text-xs font-semibold text-[#0c1527]">Гарантия 3 года</div>
                   <div className="text-[10px] text-[#64748b]">Официальная</div>
                 </div>
               </div>
-              <div className="flex items-center gap-2.5 rounded-xl border border-[#e2e8f0] bg-white p-3 shadow-sm">
+              <div className="flex items-center gap-2.5 rounded-xl bg-white p-3 shadow-sm">
                 <ClockCircleOutlined className="text-[#0891b2]" />
                 <div>
                   <div className="text-xs font-semibold text-[#0c1527]">Выезд бесплатно</div>

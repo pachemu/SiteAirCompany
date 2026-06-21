@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 
 import "antd/dist/reset.css";
 
@@ -7,6 +8,33 @@ import { Header } from "@/widgets/header";
 
 import "./globals.css";
 import { Metrica } from "@/widgets/metrica/metrica";
+
+const anthropicSerif = localFont({
+  src: [
+    {
+      path: "../../public/fonts/Anthropic Serif-fontiko/AnthropicSerif-Display-Regular-Static.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/Anthropic Serif-fontiko/AnthropicSerif-Display-Medium-Static.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/Anthropic Serif-fontiko/AnthropicSerif-Display-Semibold-Static.otf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/Anthropic Serif-fontiko/AnthropicSerif-Display-RegularItalic-Static.otf",
+      weight: "400",
+      style: "italic",
+    },
+  ],
+  variable: "--font-serif",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://кондиционеры-в-крыму.рф"),
@@ -119,7 +147,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="ru" className="h-full antialiased">
+    <html lang="ru" className={`h-full antialiased ${anthropicSerif.variable}`}>
       <head>
         <script
           type="application/ld+json"

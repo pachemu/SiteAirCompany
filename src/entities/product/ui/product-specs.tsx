@@ -64,7 +64,7 @@ export function ProductSpecs({ product }: ProductSpecsProps) {
   ];
 
   return (
-    <div className="w-full overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white p-6 shadow-sm [&_.ant-descriptions]:w-full [&_.ant-descriptions-view]:w-full [&_.ant-descriptions-view>table]:w-full [&_.ant-descriptions-item-content]:break-words [&_.ant-descriptions-item-content]:whitespace-normal">
+    <div className="w-full overflow-hidden rounded-2xl bg-white p-6 shadow-sm [&_.ant-descriptions]:w-full [&_.ant-descriptions-view]:w-full [&_.ant-descriptions-view>table]:w-full [&_.ant-descriptions-item-content]:break-words [&_.ant-descriptions-item-content]:whitespace-normal">
       <Descriptions
         title="Технические характеристики"
         column={1}

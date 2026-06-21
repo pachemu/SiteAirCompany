@@ -38,13 +38,13 @@ export default function GlobalError({
         </button>
         <a
           href={`tel:${PHONE_E164}`}
-          className="inline-flex h-11 items-center justify-center rounded-xl border border-[#e2e8f0] px-5 text-sm font-medium"
+          className="inline-flex h-11 items-center justify-center rounded-xl px-5 text-sm font-medium"
         >
           {PHONE_HUMAN}
         </a>
         <Link
           href="/"
-          className="inline-flex h-11 items-center justify-center rounded-xl border border-[#e2e8f0] px-5 text-sm font-medium"
+          className="inline-flex h-11 items-center justify-center rounded-xl px-5 text-sm font-medium"
         >
           На главную
         </Link>

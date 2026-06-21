@@ -46,7 +46,7 @@ export function CategoryGrid() {
         {CATEGORIES.map((item) => (
           <div
             key={item.title}
-            className="rounded-2xl border border-[#e2e8f0] bg-white p-5 shadow-sm"
+            className="rounded-2xl bg-white p-5 shadow-sm"
           >
             <div className="flex items-start gap-3">
               <div className="shrink-0 rounded-xl bg-[#0891b2]/10 p-2.5">{item.icon}</div>

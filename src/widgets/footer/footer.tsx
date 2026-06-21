@@ -3,7 +3,7 @@ import { EMAIL, PHONE_E164, PHONE_HUMAN } from "@/shared/config/contacts";
 
 export function Footer() {
   return (
-    <footer className="mt-12 border-t border-[#e2e8f0] bg-[#0c1527] px-4 py-10 text-white md:py-16">
+    <footer className="bg-[#0c1527] px-4 py-10 text-white md:py-16">
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
           <div className="flex flex-col gap-4">
@@ -25,6 +25,12 @@ export function Footer() {
                 className="text-sm text-white/50 transition-colors hover:text-[#22d3ee]"
               >
                 Каталог товаров
+              </Link>
+              <Link
+                href="/about"
+                className="text-sm text-white/50 transition-colors hover:text-[#22d3ee]"
+              >
+                О нас
               </Link>
             </nav>
           </div>

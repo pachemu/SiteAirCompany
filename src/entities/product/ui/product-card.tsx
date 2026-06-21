@@ -39,8 +39,8 @@ export function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <div className="group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white shadow-sm transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5">
-      <div className="relative overflow-hidden border-b border-[#e2e8f0] bg-[#f8fafc]">
+    <div className="group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5">
+      <div className="relative overflow-hidden bg-[#f8fafc]">
         <div className="absolute left-3 top-3 z-10 rounded-full bg-[#0891b2] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-md">
           В наличии
         </div>
@@ -117,7 +117,7 @@ export function ProductCard({ product }: ProductCardProps) {
           )}
         </div>
 
-        <div className="mt-4 space-y-3 border-t border-[#e2e8f0] pt-3">
+        <div className="mt-4 space-y-3 pt-3">
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#64748b]">Цена с установкой</p>
             <p className="m-0 text-xl font-extrabold tracking-tight text-[#0c1527]">

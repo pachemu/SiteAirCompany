@@ -38,7 +38,7 @@ const BENEFITS: Benefit[] = [
 
 export function Benefits() {
   return (
-    <section className="rounded-2xl border border-[#e2e8f0] bg-white p-6 shadow-sm md:p-10">
+    <section className="rounded-2xl bg-white p-6 shadow-sm md:p-10">
       <div className="space-y-2">
         <h2 className="m-0 text-2xl font-extrabold text-[#0c1527] md:text-3xl">
           Почему нас рекомендуют
@@ -51,7 +51,7 @@ export function Benefits() {
 
       <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         {BENEFITS.map((item) => (
-          <div key={item.title} className="rounded-2xl bg-[#f8fafc] p-5 shadow-sm border border-[#e2e8f0]">
+          <div key={item.title} className="rounded-2xl bg-[#f8fafc] p-5 shadow-sm">
             <div className="flex items-start gap-3">
               <div className="shrink-0 rounded-xl bg-[#0891b2]/10 p-2.5">{item.icon}</div>
               <div className="min-w-0">

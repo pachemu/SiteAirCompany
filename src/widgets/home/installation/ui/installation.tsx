@@ -1,6 +1,6 @@
 export function Installation() {
   return (
-    <section className="relative overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white px-6 py-10 shadow-sm md:px-10 md:py-14">
+    <section className="relative overflow-hidden rounded-2xl bg-white px-6 py-10 shadow-sm md:px-10 md:py-14">
       <div className="absolute inset-0 bg-gradient-to-br from-[#0891b2]/5 via-transparent to-[#0891b2]/5 pointer-events-none" />
 
       <div className="relative max-w-4xl mx-auto">
@@ -17,7 +17,7 @@ export function Installation() {
           </div>
 
           <div className="space-y-4">
-            <div className="rounded-2xl border border-[#e2e8f0] bg-[#f8fafc] p-5 md:p-6">
+            <div className="rounded-2xl bg-[#f8fafc] p-5 md:p-6">
               <div className="flex gap-4">
                 <div className="shrink-0">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0891b2]/10">
@@ -38,7 +38,7 @@ export function Installation() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-[#e2e8f0] bg-[#f8fafc] p-5 md:p-6">
+            <div className="rounded-2xl bg-[#f8fafc] p-5 md:p-6">
               <div className="flex gap-4">
                 <div className="shrink-0">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0891b2]/10">
@@ -47,7 +47,7 @@ export function Installation() {
                 </div>
                 <div className="space-y-1">
                   <h3 className="m-0 text-base font-bold text-[#0c1527]">
-                    Полный комплекс работ под ключ
+                    Полный комплекс работ
                   </h3>
                   <p className="m-0 text-sm leading-relaxed text-[#64748b]">
                     Установка кондиционера в Симферополе включает полный комплекс

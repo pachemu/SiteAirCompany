@@ -73,7 +73,7 @@ export function SeoImageTemplate(): ReactElement {
       >
         <div>Симферополь</div>
         <div>Крым</div>
-        <div>Монтаж под ключ</div>
+        <div>Монтаж и установка</div>
         <div>Гарантия</div>
       </div>
     </div>

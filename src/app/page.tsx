@@ -1,33 +1,34 @@
 import type { Metadata } from "next";
 
-import { Benefits, CategoryGrid, ContactCTA, Hero } from "@/widgets/home";
-import { Installation } from "@/widgets/home/installation";
+import { HomeHero } from "@/widgets/home/home-hero";
 
 export const metadata: Metadata = {
   title: "Купить кондиционер в Симферополе | Цены на кондиционеры в Крыму",
   description:
-    "Купить кондиционер в Симферополе по выгодным ценам. Широкий выбор кондиционеров в Крыму. Установка кондиционеров в Симферополе и Крыму.",
+    "Профессиональный монтаж и ремонт кондиционеров в Крыму. Чистая установка, подбор мощности и гарантия на оборудование Haier и HEC.",
   keywords: [
     "купить кондиционер",
     "цена",
     "купить в симферополе",
     "купить в крыму",
     "кондиционеры симферополь",
+    "монтаж кондиционеров",
+    "ремонт кондиционеров",
   ],
 };
 
-export default async function Home() {
+export default function Home() {
   return (
-    <main className="flex flex-1 bg-white text-[#0c1527]">
-      <div className="mx-auto w-full max-w-6xl px-4 py-6 md:px-6 md:py-10 xl:px-8">
-        <div className="space-y-12 md:space-y-16">
-          <Hero />
-          <CategoryGrid />
-          <Benefits />
-          <Installation />
-          <ContactCTA />
-        </div>
+    <div className="relative bg-gradient-to-br from-cyan-600 via-sky-600 to-blue-700">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -left-32 top-0 h-96 w-96 rounded-full bg-cyan-400/20 blur-3xl" />
+        <div className="absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-blue-500/20 blur-3xl" />
+        <div className="absolute left-1/2 top-1/3 h-64 w-64 -translate-x-1/2 rounded-full bg-sky-400/10 blur-2xl" />
       </div>
-    </main>
+
+      <div className="relative">
+        <HomeHero />
+      </div>
+    </div>
   );
 }
