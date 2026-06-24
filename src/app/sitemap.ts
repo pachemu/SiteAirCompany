@@ -1,22 +1,20 @@
 import type { MetadataRoute } from "next";
 
-import { getProducts } from "@/entities/product/api";
+import products from "@/entities/product/model/products.data.json";
 import { SITE_URL } from "@/shared/config/site";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
-export async function getSitemapUrls(): Promise<string[]> {
+export function getSitemapUrls(): string[] {
   const staticUrls = [
     SITE_URL.toString(),
     new URL("/catalog", SITE_URL).toString(),
   ];
 
   try {
-    const products = await getProducts();
-
     return [
       ...staticUrls,
-      ...products.map((product) =>
+      ...(products as Array<{ id: string }>).map((product) =>
         new URL(`/catalog/${product.id}`, SITE_URL).toString(),
       ),
     ];
@@ -25,8 +23,8 @@ export async function getSitemapUrls(): Promise<string[]> {
   }
 }
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const urls = await getSitemapUrls();
+export default function sitemap(): MetadataRoute.Sitemap {
+  const urls = getSitemapUrls();
 
   return urls.map((url) => ({
     url,

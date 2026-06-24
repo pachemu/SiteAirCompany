@@ -69,7 +69,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
       <div className="flex flex-1 flex-col justify-between p-4">
         <div className="space-y-3">
-          <div className="space-y-1">
+          <div className="space-y-1 text-center">
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0891b2]">
               {product.category}
             </p>
@@ -78,7 +78,7 @@ export function ProductCard({ product }: ProductCardProps) {
                 {product.brand} {product.series}
               </h2>
             </Link>
-            <p className="text-xs text-[#64748b]">{product.model}</p>
+            <p className="text-left text-xs text-[#64748b]">{product.model}</p>
           </div>
 
           <dl className="space-y-1.5 text-sm">

@@ -11,7 +11,7 @@ import {
 
 export function HomeConsultation() {
   return (
-    <section className="px-4 py-12 md:px-6 md:py-16">
+    <section className="px-4 py-8 md:px-6 md:py-12">
       <div className="mx-auto max-w-6xl">
         <div className="overflow-hidden rounded-[2rem] border border-white/20 bg-white/10 shadow-2xl shadow-blue-950/20 backdrop-blur-md">
           <div className="grid grid-cols-1 gap-10 p-8 md:grid-cols-2 md:gap-12 md:p-12 lg:p-16">

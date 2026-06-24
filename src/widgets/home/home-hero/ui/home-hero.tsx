@@ -75,12 +75,14 @@ function UnitCard({
 
 export function HomeHero() {
   return (
-    <section className="relative overflow-hidden px-4 py-12 md:px-6 md:py-16 lg:py-20">
+    <section className="relative overflow-hidden px-4 py-8 md:px-6 md:py-12 lg:py-16">
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-12">
         <div className="flex flex-col gap-6 md:gap-8">
-          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/30 bg-white/15 px-4 py-2 text-xs font-semibold tracking-wide text-white backdrop-blur-sm">
-            <SnowflakeIcon />
-            Эксперты по климату в Крыму
+          <div className="w-full flex justify-center md:justify-start">
+            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/30 bg-white/15 px-4 py-2 text-xs font-semibold tracking-wide text-white backdrop-blur-sm">
+              <SnowflakeIcon />
+              Эксперты по климату в Крыму
+            </div>
           </div>
 
           <h1 className="font-serif text-4xl font-normal leading-[1.08] tracking-tight text-white md:text-5xl lg:text-[3.5rem] xl:text-[3.75rem]">
@@ -104,7 +106,7 @@ export function HomeHero() {
 
             <a
               href={`tel:${PHONE_E164}`}
-              className="inline-flex items-center gap-3 rounded-full px-2 py-1 text-white transition-colors hover:text-white/90"
+              className="inline-flex items-center gap-3 rounded-full px-2 py-1 text-white transition-colors hover:text-white/90 max-md:w-full max-md:justify-center max-md:bg-white/10 max-md:backdrop-blur-sm max-md:p-2"
             >
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/15 backdrop-blur-sm ring-1 ring-white/25">
                 <PhoneOutlined className="text-lg" />

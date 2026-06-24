@@ -1,8 +1,11 @@
-import { getProductById } from "@/entities/product/api/get-product-by-id";
+import { getProductById } from "@/entities/product/api";
+import products from "@/entities/product/model/products.data.json";
 import { ProductDetailsWidget } from "@/widgets/product-details";
 import { notFound } from "next/navigation";
 
-export const dynamic = "force-dynamic";
+export function generateStaticParams() {
+  return (products as Array<{ id: string }>).map((p) => ({ id: p.id }));
+}
 
 export default async function Page({
   params,

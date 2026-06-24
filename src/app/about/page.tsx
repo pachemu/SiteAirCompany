@@ -81,14 +81,14 @@ function SectionHeading({
   light?: boolean;
 }) {
   return (
-    <div className="mb-12 space-y-3 md:mb-16">
+    <div className="mb-4 space-y-3 md:mb-6">
       <p
         className={`text-xs font-bold uppercase tracking-[0.2em] ${light ? "text-white/60" : "text-[#0891b2]"}`}
       >
         {label}
       </p>
       <h2
-        className={`font-serif text-3xl font-normal tracking-tight md:text-4xl ${light ? "text-white" : "text-[#0c1527]"}`}
+        className={`mb-16 font-serif text-3xl font-normal tracking-tight md:mb-24 md:text-4xl ${light ? "text-white" : "text-[#0c1527]"}`}
       >
         {title}
       </h2>
@@ -107,7 +107,7 @@ export default function AboutPage() {
   return (
     <main className="flex flex-1 text-[#0c1527]">
       <div className="w-full">
-        <section className="relative overflow-hidden bg-gradient-to-br from-cyan-600 via-sky-600 to-blue-700 px-4 py-12 md:px-6 md:py-16">
+        <section className="relative overflow-hidden bg-gradient-to-br from-cyan-600 via-sky-600 to-blue-700 px-4 py-8 md:px-6 md:py-12">
           <div className="pointer-events-none absolute inset-0 overflow-hidden">
             <div className="absolute -left-24 top-0 h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl" />
             <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-blue-500/20 blur-3xl" />
@@ -122,7 +122,7 @@ export default function AboutPage() {
               <span className="text-white">О нас</span>
             </nav>
 
-            <div className="max-w-3xl space-y-5">
+            <div className="max-w-3xl space-y-5 text-center md:text-left">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/60">
                 ИП Ионин Алексей Иванович
               </p>
@@ -134,7 +134,7 @@ export default function AboutPage() {
                 в Симферополе и по всему Крыму. Чистый монтаж с пылесосом, подбор
                 мощности под вашу площадь и официальная гарантия на оборудование.
               </p>
-              <div className="flex flex-wrap gap-3 pt-2">
+              <div className="flex flex-wrap justify-center gap-3 pt-2">
                 <Link
                   href="/catalog"
                   className="inline-flex h-12 items-center justify-center rounded-full bg-white px-7 text-sm font-semibold text-[#0c1527] shadow-lg transition-all hover:bg-white/90"
@@ -152,7 +152,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="bg-white px-4 py-12 md:px-6 md:py-16">
+        <section className="bg-white px-4 py-8 md:px-6 md:py-12">
           <div className="mx-auto max-w-6xl">
             <SectionHeading
               label="Подбор"
@@ -178,7 +178,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="bg-[#f8fafc] px-4 py-12 md:px-6 md:py-16">
+        <section className="bg-[#f8fafc] px-4 py-8 md:px-6 md:py-12">
           <div className="mx-auto max-w-6xl">
             <SectionHeading
               label="Преимущества"
@@ -204,7 +204,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="bg-white px-4 py-12 md:px-6 md:py-16">
+        <section className="bg-white px-4 py-8 md:px-6 md:py-12">
           <div className="mx-auto max-w-6xl">
             <SectionHeading
               label="Монтаж"
@@ -235,7 +235,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#0c1527] via-[#0e3a5e] to-[#0891b2] px-4 py-12 md:px-6 md:py-16">
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#0c1527] via-[#0e3a5e] to-[#0891b2] px-4 py-8 md:px-6 md:py-12">
           <div className="relative mx-auto max-w-6xl">
             <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-center">
               <div className="space-y-4">

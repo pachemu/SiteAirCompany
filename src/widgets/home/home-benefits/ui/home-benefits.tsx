@@ -36,7 +36,7 @@ const BENEFITS = [
 
 export function HomeBenefits() {
   return (
-    <section className="px-4 py-12 md:px-6 md:py-16">
+    <section className="px-4 py-8 md:px-6 md:py-12">
       <div className="mx-auto max-w-6xl">
         <div className="mb-12 space-y-4 text-center md:mb-16">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/60">

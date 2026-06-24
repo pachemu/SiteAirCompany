@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import {
   CATALOG_SORT_POWER_OPTIONS,
   CATALOG_SORT_PRICE_OPTIONS,
@@ -49,6 +52,7 @@ export function CatalogFiltersPanel({
   const filteredFeatures = options.features.filter((feature) =>
     FEATURES.includes(feature),
   );
+  const [featuresExpanded, setFeaturesExpanded] = useState(false);
   const onChangeSelect = (event: string) => {
     onAreaChange(event);
   };
@@ -83,10 +87,6 @@ export function CatalogFiltersPanel({
                 Обновляем каталог...
               </span>
             ) : null}
-
-            <Button variant="outlined" onClick={onReset}>
-              Сбросить
-            </Button>
           </div>
         </div>
 
@@ -162,25 +162,54 @@ export function CatalogFiltersPanel({
           <p className="text-sm font-medium pb-3">Фильтрация по функциям</p>
 
           <div className="flex flex-wrap gap-2">
-            {filteredFeatures.map((feature) => {
+            {filteredFeatures.slice(0, 1).map((feature) => {
               const isActive = filters.features.includes(feature);
-
               return (
                 <Button
                   key={feature}
                   type={isActive ? "primary" : "default"}
                   onClick={() => onFeatureToggle(feature)}
-                  className={
-                    isActive
-                      ? "bg-[#38BDF8] text-[#0F172A]"
-                      : "bg-[#F8FAFC] text-[#0F172A] hover:!border-[#38BDF8] hover:!text-[#0284C7]"
-                  }
+                  className={isActive ? "bg-[#38BDF8] text-[#0F172A]" : "bg-[#F8FAFC] text-[#0F172A] hover:!border-[#38BDF8] hover:!text-[#0284C7]"}
                 >
                   {feature}
                 </Button>
               );
             })}
+            {filteredFeatures.length > 1 && (
+              <div className={featuresExpanded ? "contents" : "hidden md:contents"}>
+                {filteredFeatures.slice(1).map((feature) => {
+                  const isActive = filters.features.includes(feature);
+                  return (
+                    <Button
+                      key={feature}
+                      type={isActive ? "primary" : "default"}
+                      onClick={() => onFeatureToggle(feature)}
+                      className={isActive ? "bg-[#38BDF8] text-[#0F172A]" : "bg-[#F8FAFC] text-[#0F172A] hover:!border-[#38BDF8] hover:!text-[#0284C7]"}
+                    >
+                      {feature}
+                    </Button>
+                  );
+                })}
+              </div>
+            )}
+            {!featuresExpanded && filteredFeatures.length > 1 && (
+              <div className="md:hidden">
+                <Button
+                  type="default"
+                  onClick={() => setFeaturesExpanded(true)}
+                  className="bg-[#F8FAFC] text-[#475569] hover:!border-[#38BDF8] hover:!text-[#0284C7]"
+                >
+                  Показать все ({filteredFeatures.length - 1})
+                </Button>
+              </div>
+            )}
           </div>
+        </div>
+
+        <div className="flex justify-end border-t border-[#CBD5E1]/50 pt-4">
+          <Button variant="outlined" onClick={onReset}>
+            Сбросить фильтры
+          </Button>
         </div>
       </div>
     </section>

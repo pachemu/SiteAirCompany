@@ -21,13 +21,12 @@ export function Header() {
         <div className="flex items-center justify-between gap-3 rounded-full bg-white/80 px-4 py-2.5 shadow-lg shadow-blue-900/10 backdrop-blur-md md:px-6 md:py-3">
           <Link
             href="/"
-            className="flex shrink-0 items-center gap-2 text-base font-bold tracking-tight text-[#0c1527] md:text-lg"
+            className="flex min-w-0 items-center gap-2 font-bold tracking-tight text-[#0c1527] text-sm md:text-base lg:text-lg"
           >
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#0891b2] text-xs font-bold text-white">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#0891b2] text-xs font-bold text-white">
               КК
             </span>
-            <span className="hidden sm:inline">Кондиционеры в Крыму</span>
-            <span className="sm:hidden">КК</span>
+            <span className="truncate">Кондиционеры в Крыму</span>
           </Link>
 
           <nav className="hidden items-center gap-1 md:flex">
@@ -79,7 +78,7 @@ export function Header() {
             ))}
             <a
               href={`tel:${PHONE_E164}`}
-              className="rounded-2xl bg-blue-600 px-4 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-blue-700"
+              className="max-md:flex max-md:w-full max-md:items-center max-md:justify-center max-md:rounded-2xl max-md:bg-blue-600 max-md:p-3 max-md:text-center max-md:text-sm max-md:font-semibold max-md:text-white max-md:transition-colors max-md:hover:bg-blue-700 rounded-2xl bg-blue-600 px-4 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-blue-700"
               onClick={() => setMobileOpen(false)}
             >
               Связаться
