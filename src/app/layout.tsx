@@ -5,6 +5,7 @@ import "antd/dist/reset.css";
 
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
+import { AcCalculator } from "@/widgets/ac-calculator/ui/ac-calculator";
 
 import "./globals.css";
 import { Metrica } from "@/widgets/metrica/metrica";
@@ -159,6 +160,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <AcCalculator />
       </body>
     </html>
   );

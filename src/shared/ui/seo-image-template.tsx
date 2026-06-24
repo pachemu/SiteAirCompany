@@ -13,7 +13,7 @@ export function SeoImageTemplate(): ReactElement {
         justifyContent: "space-between",
         padding: "64px",
         background:
-          "linear-gradient(135deg, #0f172a 0%, #1d4ed8 48%, #e2e8f0 100%)",
+          "linear-gradient(135deg, #0f172a 0%, #0ea5e9 48%, #e2e8f0 100%)",
         color: "#ffffff",
         fontFamily: "system-ui, sans-serif",
       }}

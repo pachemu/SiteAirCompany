@@ -44,7 +44,7 @@ export function Header() {
           <div className="flex items-center gap-2">
             <a
               href={`tel:${PHONE_E164}`}
-              className="hidden rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700 sm:inline-flex"
+              className="hidden rounded-full bg-cyan-400 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-cyan-500 sm:inline-flex"
             >
               Связаться
             </a>
@@ -78,7 +78,7 @@ export function Header() {
             ))}
             <a
               href={`tel:${PHONE_E164}`}
-              className="max-md:flex max-md:w-full max-md:items-center max-md:justify-center max-md:rounded-2xl max-md:bg-blue-600 max-md:p-3 max-md:text-center max-md:text-sm max-md:font-semibold max-md:text-white max-md:transition-colors max-md:hover:bg-blue-700 rounded-2xl bg-blue-600 px-4 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-blue-700"
+              className="max-md:flex max-md:w-full max-md:items-center max-md:justify-center max-md:rounded-2xl max-md:bg-cyan-400 max-md:p-3 max-md:text-center max-md:text-sm max-md:font-semibold max-md:text-white max-md:transition-colors max-md:hover:bg-cyan-500 rounded-2xl bg-cyan-400 px-4 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-cyan-500"
               onClick={() => setMobileOpen(false)}
             >
               Связаться

@@ -70,50 +70,6 @@ export function ProductDetailsWidget({ product }: ProductDetailsWidgetProps) {
 
             <ProductDescription product={product} />
 
-            <div className="rounded-2xl bg-white p-6 shadow-sm">
-              <h3 className="m-0 mb-4 text-base font-bold text-[#0c1527]">
-                Как проходит установка
-              </h3>
-              <div className="space-y-3">
-                <div className="flex items-start gap-3">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#0891b2]/10">
-                    <span className="text-sm font-bold text-[#0891b2]">1</span>
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-[#0c1527]">Заявка и консультация</div>
-                    <div className="text-xs text-[#64748b]">Вы оставляете заявку, мы перезвоним и подберём модель</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#0891b2]/10">
-                    <span className="text-sm font-bold text-[#0891b2]">2</span>
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-[#0c1527]">Замер и расчёт</div>
-                    <div className="text-xs text-[#64748b]">Бесплатный выезд, замер помещения, расчёт стоимости</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#0891b2]/10">
-                    <span className="text-sm font-bold text-[#0891b2]">3</span>
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-[#0c1527]">Доставка и монтаж</div>
-                    <div className="text-xs text-[#64748b]">Доставляем оборудование и устанавливаем за 2-3 часа</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#0891b2]/10">
-                    <span className="text-sm font-bold text-[#0891b2]">4</span>
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-[#0c1527]">Пусконаладка и гарантия</div>
-                    <div className="text-xs text-[#64748b]">Проверяем работу, убираем за собой, выдаём гарантию 3 года</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <div className="grid grid-cols-2 gap-3">
               <div className="flex items-center gap-2.5 rounded-xl bg-white p-3 shadow-sm">
                 <ToolOutlined className="text-[#0891b2]" />

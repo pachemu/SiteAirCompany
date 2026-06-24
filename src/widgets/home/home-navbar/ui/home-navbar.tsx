@@ -44,7 +44,7 @@ export function HomeNavbar() {
           <div className="flex items-center gap-2">
             <a
               href={`tel:${PHONE_E164}`}
-              className="hidden rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700 sm:inline-flex"
+              className="hidden rounded-full bg-cyan-400 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-cyan-500 sm:inline-flex"
             >
               Связаться
             </a>
@@ -78,7 +78,7 @@ export function HomeNavbar() {
             ))}
             <a
               href={`tel:${PHONE_E164}`}
-              className="rounded-2xl bg-blue-600 px-4 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-blue-700"
+              className="rounded-2xl bg-cyan-400 px-4 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-cyan-500"
               onClick={() => setMobileOpen(false)}
             >
               Связаться

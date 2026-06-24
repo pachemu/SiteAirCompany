@@ -107,7 +107,7 @@ export default function AboutPage() {
   return (
     <main className="flex flex-1 text-[#0c1527]">
       <div className="w-full">
-        <section className="relative overflow-hidden bg-gradient-to-br from-cyan-600 via-sky-600 to-blue-700 px-4 py-8 md:px-6 md:py-12">
+        <section className="relative overflow-hidden bg-gradient-to-br from-cyan-400 via-cyan-500 to-blue-500 px-4 py-8 md:px-6 md:py-12">
           <div className="pointer-events-none absolute inset-0 overflow-hidden">
             <div className="absolute -left-24 top-0 h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl" />
             <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-blue-500/20 blur-3xl" />

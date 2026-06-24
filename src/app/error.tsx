@@ -32,7 +32,7 @@ export default function GlobalError({
         <button
           type="button"
           onClick={() => reset()}
-          className="inline-flex h-11 items-center justify-center rounded-xl bg-[#2563eb] px-5 text-sm font-medium text-white shadow-sm"
+          className="inline-flex h-11 items-center justify-center rounded-xl bg-[#0ea5e9] px-5 text-sm font-medium text-white shadow-sm"
         >
           Попробовать снова
         </button>
