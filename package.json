@@ -6,19 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "npx serve@latest out",
-    "lint": "eslint"
+    "lint": "eslint",
+    "doctor": "npx react-doctor@latest"
   },
   "dependencies": {
     "@ant-design/icons": "^6.1.1",
-    "@supabase/ssr": "^0.10.2",
-    "@supabase/supabase-js": "^2.103.0",
     "antd": "^6.3.5",
     "better-sqlite3": "^11.10.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.45.2",
     "lucide-react": "^1.8.0",
-    "next": "16.2.3",
+    "next": "16.2.6",
     "postgres": "^3.4.9",
     "radix-ui": "^1.4.3",
     "react": "19.2.4",
@@ -40,9 +39,9 @@
     "dotenv": "^17.4.1",
     "drizzle-kit": "^0.31.10",
     "eslint": "^9.39.4",
-    "eslint-config-next": "16.2.3",
+    "eslint-config-next": "16.2.6",
     "eslint-plugin-react": "^7.37.5",
-    "globals": "^17.4.0",
+    "react-doctor": "^0.5.8",
     "tailwindcss": "^4.2.4",
     "typescript": "^5.9.3"
   }
