@@ -8,28 +8,28 @@ import { PHONE_E164, PHONE_HUMAN } from "@/shared/config/contacts";
 
 const CASCADE_UNITS = [
   {
-    src: "/images/hero/RAC-QUANTUM-BLACK.png",
+    src: "/images/products/product-images/RAC2026/RAC-QUANTUM-BLACK.png",
     alt: "Haier Quantum — настенная сплит-система",
     wrapperClass: "right-[2%] top-[2%] z-40 w-[46%] animate-[float_6s_ease-in-out_infinite]",
   },
   {
-    src: "/images/hero/RAC-STELLAR-HP-SILVER.png",
+    src: "/images/products/product-images/RAC2026/RAC-STELLAR-HP-SILVER.png",
     alt: "Haier Stellar — компактная модель",
     wrapperClass: "left-0 top-[14%] z-30 w-[42%] animate-[float_7s_ease-in-out_0.8s_infinite]",
   },
   {
-    src: "/images/hero/RAC-JADE-SM-SILVER-Photoroom.png",
+    src: "/images/products/product-images/RAC2026/RAC-JADE-SM-SILVER.png",
     alt: "Haier Jade — премиальная серия",
     wrapperClass: "right-[8%] top-[36%] z-20 w-[48%] animate-[float_5.5s_ease-in-out_1.2s_infinite]",
   },
   {
-    src: "/images/hero/RAC-LIGHTERA-DC-INVERTER-PINK-Photoroom.png",
+    src: "/images/products/product-images/RAC2025/RAC-LIGHTERA-DC-INVERTER-PINK.jpg",
     alt: "Haier Lightera — инверторная модель",
     wrapperClass: "bottom-[18%] left-[6%] z-10 w-[44%] animate-[float_6.5s_ease-in-out_0.4s_infinite]",
   },
   {
-    src: "/images/hero/internal-unit.png",
-    alt: "Внутренний блок кондиционера",
+    src: "/images/products/product-images/HEC/HEC-2U-MULTI-WHITE.png",
+    alt: "Внутренний блок кондиционера HEC",
     wrapperClass: "bottom-[2%] right-[4%] z-10 w-[40%] animate-[float_7.5s_ease-in-out_1.8s_infinite]",
   },
 ] as const;

@@ -169,6 +169,8 @@ public/images/products/
 
 **Формат путей в данных:** `/images/products/product-images/{подпапка}/{файл}.png`
 Пути в `products.data.json` уже приведены к локальному виду (от корня `public/`).
+Исходные файлы находятся в публичном Supabase Storage bucket `product-images`.
+Команда `node scripts/download-images.js` читает пути из `products.data.json` и скачивает отсутствующие файлы в `public/images/products/product-images/`; `DATABASE_URL` не требуется.
 
 ---
 
@@ -313,7 +315,7 @@ siteaircompany/
 │       └── schema.ts             # Drizzle-схема productsTable (ОСТАЛАСЬ ОТ БД)
 ├── drizzle/                      # SQL-миграции (ОСТАЛИСЬ ОТ БД)
 ├── scripts/
-│   ├── download-images.js        # Скрипт скачивания картинок из Supabase (ОТКЛЮЧЁН)
+│   ├── download-images.js        # Скачивает локальные копии картинок из публичного Supabase Storage
 │   └── extract-products.js       # Скрипт извлечения данных из out/catalog.txt
 ├── .env                          # DATABASE_URL (ОТКЛЮЧЁНА)
 ├── .env.local                    # DATABASE_URL (ОТКЛЮЧЁНА)

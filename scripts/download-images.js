@@ -1,13 +1,15 @@
-require("dotenv/config");
-
 const fs = require("node:fs/promises");
 const path = require("node:path");
-const postgres = require("postgres");
 
 const PROJECT_ROOT = path.resolve(__dirname, "..");
 const PUBLIC_DIR = path.join(PROJECT_ROOT, "public");
-const LOCAL_PRODUCTS_IMAGE_BASE_PATH = "/images/products";
-const SUPABASE_PUBLIC_STORAGE_PREFIX = "/storage/v1/object/public/";
+const PRODUCTS_DATA_PATH = path.join(
+  PROJECT_ROOT,
+  "src/entities/product/model/products.data.json",
+);
+const LOCAL_PRODUCTS_IMAGE_PREFIX = "/images/products/product-images/";
+const SUPABASE_PUBLIC_STORAGE_URL =
+  "https://vrnhymlneqdiphogedtm.supabase.co/storage/v1/object/public/product-images/";
 const MAX_ATTEMPTS = 3;
 
 function sleep(ms) {
@@ -26,41 +28,29 @@ function normalizeImageUrlPart(imageUrl) {
   return imageUrl.trim().replace(/^(?:%20|%09|\s)+/gi, "");
 }
 
-function getLocalProductImageUrl(imageUrl) {
+function getRemoteProductImageUrl(localUrl) {
   try {
-    const normalizedImageUrl = normalizeImageUrlPart(imageUrl);
-    const parsedUrl = new URL(normalizedImageUrl);
+    const normalizedUrl = normalizeImageUrlPart(localUrl);
 
-    if (parsedUrl.protocol !== "http:" && parsedUrl.protocol !== "https:") {
-      return normalizedImageUrl;
+    if (!normalizedUrl.startsWith(LOCAL_PRODUCTS_IMAGE_PREFIX)) {
+      return null;
     }
 
-    let pathname = decodeURIComponent(parsedUrl.pathname);
-
-    if (pathname.startsWith(SUPABASE_PUBLIC_STORAGE_PREFIX)) {
-      pathname = pathname.slice(SUPABASE_PUBLIC_STORAGE_PREFIX.length);
-    } else {
-      pathname = `${parsedUrl.hostname}${pathname}`;
-    }
-
-    const segments = pathname
+    const segments = normalizedUrl
+      .slice(LOCAL_PRODUCTS_IMAGE_PREFIX.length)
       .split("/")
+      .filter(Boolean)
+      .map(decodeURIComponent)
       .map(sanitizePathSegment)
-      .filter(Boolean);
-
-    if (segments[0] === "products") {
-      segments.shift();
-    }
+      .map(encodeURIComponent);
 
     if (segments.length === 0) {
-      return normalizedImageUrl;
+      return null;
     }
 
-    return `${LOCAL_PRODUCTS_IMAGE_BASE_PATH}/${segments
-      .map((segment) => encodeURIComponent(segment))
-      .join("/")}`;
+    return `${SUPABASE_PUBLIC_STORAGE_URL}${segments.join("/")}`;
   } catch {
-    return normalizeImageUrlPart(imageUrl);
+    return null;
   }
 }
 
@@ -81,7 +71,7 @@ function parseImageUrls(rawImageUrl) {
   return rawImageUrl
     .split(",")
     .map(normalizeImageUrlPart)
-    .filter((url) => /^https?:\/\//i.test(url));
+    .filter((url) => url.startsWith(LOCAL_PRODUCTS_IMAGE_PREFIX));
 }
 
 async function fileExists(filePath) {
@@ -121,37 +111,22 @@ async function downloadWithRetry(remoteUrl, destinationPath) {
 }
 
 async function getProductImageUrls() {
-  if (!process.env.DATABASE_URL) {
-    throw new Error("DATABASE_URL is missing. Cannot download product images.");
-  }
-
-  const sql = postgres(process.env.DATABASE_URL, { prepare: false });
-
-  try {
-    const rows = await sql`
-      select image_url
-      from products
-      where image_url is not null and image_url <> ''
-    `;
-
-    return rows.flatMap((row) => parseImageUrls(row.image_url));
-  } finally {
-    await sql.end();
-  }
+  const products = JSON.parse(await fs.readFile(PRODUCTS_DATA_PATH, "utf8"));
+  return products.flatMap((product) => parseImageUrls(product.imageUrl));
 }
 
 async function main() {
-  const remoteUrls = [...new Set(await getProductImageUrls())];
+  const localUrls = [...new Set(await getProductImageUrls())];
   let downloaded = 0;
   let skipped = 0;
   let failed = 0;
 
-  for (const remoteUrl of remoteUrls) {
-    const localUrl = getLocalProductImageUrl(remoteUrl);
+  for (const localUrl of localUrls) {
+    const remoteUrl = getRemoteProductImageUrl(localUrl);
 
-    if (localUrl === remoteUrl) {
+    if (!remoteUrl) {
       skipped += 1;
-      console.warn(`[images] skipped unsupported url: ${remoteUrl}`);
+      console.warn(`[images] skipped unsupported path: ${localUrl}`);
       continue;
     }
 
@@ -174,7 +149,7 @@ async function main() {
   }
 
   console.log(
-    `[images] done. total=${remoteUrls.length}, downloaded=${downloaded}, skipped=${skipped}, failed=${failed}`,
+    `[images] done. total=${localUrls.length}, downloaded=${downloaded}, skipped=${skipped}, failed=${failed}`,
   );
 
   if (failed > 0) {

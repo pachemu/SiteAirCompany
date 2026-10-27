@@ -46,4 +46,11 @@ next-env.d.ts
 
 .public
 public/images/
+!public/images/
+public/images/*
+!public/images/products/
+public/images/products/*
+!public/images/products/product-images/
+public/images/products/product-images/*
+!public/images/products/product-images/**
 public/fonts/
